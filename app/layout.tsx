@@ -45,7 +45,7 @@ export default function RootLayout({
     <html lang="en" className={`${poppins.variable} bg-background`}>
       <body className="font-sans antialiased">
         <header className="relative">
-          <TopBar />
+          {/* <TopBar /> */}
           <Navbar />
         </header>
         {children}
