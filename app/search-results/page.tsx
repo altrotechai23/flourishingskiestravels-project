@@ -1,10 +1,7 @@
 // app/search-results/page.tsx
 
-"use client"
-
 import Image from "next/image"
 import Link from "next/link"
-import { useSearchParams } from "next/navigation"
 import {
   Heart,
   Info,
@@ -13,6 +10,8 @@ import {
   Star,
   ThumbsUp,
 } from "lucide-react"
+
+export const dynamic = "force-dynamic"
 
 const results = [
   {
@@ -50,14 +49,27 @@ const results = [
   },
 ]
 
-export default function SearchResultsPage() {
-  const params = useSearchParams()
+type Props = {
+  searchParams: Promise<{
+    service?: string
+    destination?: string
+    adults?: string
+    children?: string
+    rooms?: string
+  }>
+}
 
-  const service = params.get("service") || "Hotel Bookings"
-  const destination = params.get("destination") || "Cape Town, South Africa"
-  const adults = params.get("adults") || "2"
-  const children = params.get("children") || "1"
-  const rooms = params.get("rooms") || "1"
+export default async function SearchResultsPage({
+  searchParams,
+}: Props) {
+  const params = await searchParams
+
+  const service = params.service || "Hotel Bookings"
+  const destination =
+    params.destination || "Cape Town, South Africa"
+  const adults = params.adults || "2"
+  const children = params.children || "1"
+  const rooms = params.rooms || "1"
 
   const filtered = results.filter(
     (item) =>
