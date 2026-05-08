@@ -1,11 +1,13 @@
+// app/contact/page.tsx
+
 import type { Metadata } from "next"
 import { PageBanner } from "@/components/page-banner"
 import { ContactSection } from "@/components/contact-section"
 
 export const metadata: Metadata = {
-  title: "Contact Us | FlourishingTravels",
+  title: "Contact Us | Flourishing Skies Travels",
   description:
-    "Get in touch with FlourishingTravels. We're here to help you plan your next unforgettable journey.",
+    "Get in touch with Flourishing Skies Travels for travel consultancy, visa assistance, bookings, logistics, airport transfers and premium travel services.",
 }
 
 export default function ContactPage() {
@@ -13,7 +15,7 @@ export default function ContactPage() {
     <main>
       <PageBanner
         title="Contact Us"
-        subtitle="We'd love to hear from you. Reach out and start planning your next journey today."
+        subtitle="Speak with our team for bookings, visas, airport transfers, logistics, delivery services and premium travel experiences."
         image="/contact-office.jpg"
       />
       <ContactSection />
