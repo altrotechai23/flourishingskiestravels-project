@@ -210,14 +210,14 @@ export default async function SearchResultsPage({
             href="/"
             className="inline-flex items-center gap-2 text-2xl font-bold tracking-tight text-white sm:text-3xl"
           >
-            FlourishingTravels
+            Flourishing Skies Travels
           </Link>
 
           {/* search bar */}
-          <div className="mt-8 overflow-hidden rounded-2xl border-[4px] border-[#febb02] bg-white shadow-2xl">
+          <div className="mt-8 overflow-hidden rounded-2xl border-4 border-[#febb02] bg-white shadow-2xl">
             <div className="grid grid-cols-1 xl:grid-cols-[1.5fr_1fr_1fr_auto]">
               {/* destination */}
-              <div className="flex min-h-[76px] items-center gap-4 border-b border-gray-200 px-5 xl:border-b-0 xl:border-r">
+              <div className="flex min-h-19 items-center gap-4 border-b border-gray-200 px-5 xl:border-b-0 xl:border-r">
                 <MapPin className="h-6 w-6 shrink-0 text-gray-500" />
 
                 <div className="min-w-0">
@@ -232,7 +232,7 @@ export default async function SearchResultsPage({
               </div>
 
               {/* service */}
-              <div className="flex min-h-[76px] items-center gap-4 border-b border-gray-200 px-5 xl:border-b-0 xl:border-r">
+              <div className="flex min-h-19 items-center gap-4 border-b border-gray-200 px-5 xl:border-b-0 xl:border-r">
                 <Search className="h-6 w-6 shrink-0 text-gray-500" />
 
                 <div className="min-w-0">
@@ -247,7 +247,7 @@ export default async function SearchResultsPage({
               </div>
 
               {/* guests */}
-              <div className="flex min-h-[76px] items-center gap-4 border-b border-gray-200 px-5 xl:border-b-0 xl:border-r">
+              <div className="flex min-h-19 items-center gap-4 border-b border-gray-200 px-5 xl:border-b-0 xl:border-r">
                 <BedDouble className="h-6 w-6 shrink-0 text-gray-500" />
 
                 <div>
@@ -262,7 +262,7 @@ export default async function SearchResultsPage({
               </div>
 
               {/* button */}
-              <button className="min-h-[76px] bg-[#0071c2] px-10 text-xl font-bold text-white transition hover:bg-[#005999]">
+              <button className="min-h-19 bg-[#0071c2] px-10 text-xl font-bold text-white transition hover:bg-[#005999]">
                 Search
               </button>
             </div>
@@ -271,12 +271,12 @@ export default async function SearchResultsPage({
       </section>
 
       {/* content */}
-      <section className="mx-auto max-w-[1280px] px-4 py-8 sm:px-6">
+      <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
         <div className="grid gap-6 xl:grid-cols-[320px_1fr]">
           {/* sidebar */}
           <aside className="space-y-5">
             <div className="overflow-hidden rounded-3xl bg-white shadow-sm">
-              <div className="grid h-[260px] place-items-center bg-gray-100">
+              <div className="grid h-65 place-items-center bg-gray-100">
                 <button className="inline-flex items-center gap-3 rounded-2xl bg-[#0071c2] px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-[#005999]">
                   <MapPin className="h-5 w-5" />
                   Show on map
@@ -391,7 +391,7 @@ export default async function SearchResultsPage({
                     >
                       <div className="grid xl:grid-cols-[340px_1fr]">
                         {/* image */}
-                        <div className="relative h-[260px] overflow-hidden">
+                        <div className="relative h- overflow-hidden">
                           <Image
                             src={item.image}
                             alt={item.title}

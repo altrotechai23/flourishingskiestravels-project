@@ -33,12 +33,19 @@ const services = [
 ]
 
 const destinations = [
-  "Cape Town, South Africa",
-  "Lagos, Nigeria",
-  "London, United Kingdom",
+  "South Africa",
+  "Egypt",
+  "Qatar",
+  "Tanzania",
+  "Thailand",
+  "Dubai",
+  "Nigeria",
+  "Zimbabwe",
+  "Turkey",
   "Dubai, UAE",
-  "Bali, Indonesia",
-  "New York, USA",
+  "Uganda",
+  "Ethiopia",
+  "Oman",
 ]
 
 export function BookingSearch() {

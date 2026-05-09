@@ -12,11 +12,11 @@ const features = [
 export function About() {
   return (
     <section id="about" className="bg-white py-16 md:py-24">
-      <div className="mx-auto grid max-w-[1280px] grid-cols-1 items-center gap-10 px-4 sm:px-6 md:gap-12 lg:grid-cols-2">
-        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm shadow-xl">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 sm:px-6 md:gap-12 lg:grid-cols-2">
+        <div className="relative aspect-4/3 w-full overflow-hidden rounded-sm shadow-xl">
           <Image
             src="/tour-paris.jpg"
-            alt="About FlourishingTravels"
+            alt="About Flourishing Skies Travels"
             fill
             sizes="(min-width: 1024px) 50vw, 100vw"
             className="object-cover"
