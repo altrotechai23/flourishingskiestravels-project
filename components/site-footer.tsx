@@ -103,7 +103,7 @@ export function SiteFooter() {
           <div>
             <div className="inline-flex rounded-2xl bg-white p-3 shadow-2xl">
               <Image
-                src="/logo.png"
+                src="/log.jpg"
                 alt="Flourishing Skies Travels"
                 width={170}
                 height={60}
