@@ -37,14 +37,14 @@ export function Navbar() {
               className="flex items-center"
               aria-label="Flourishing Travels Home"
             >
-              <div className="flex items-center rounded-xl bg-white px-3 py-2 shadow-lg">
+              <div className="flex items-center rounded-xl shadow-lg">
                 <Image
-                  src="/logo.png"
+                  src="/log.jpg"
                   alt="Flourishing Travels"
                   width={170}
                   height={50}
                   priority
-                  className="h-8 w-auto object-contain sm:h-10"
+                  className="h-10 w-auto object-contain sm:h-12 rounded-xl"
                 />
               </div>
             </Link>

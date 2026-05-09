@@ -12,6 +12,7 @@ import {
   Check,
   ArrowRight,
   Plane,
+  Loader2,
 } from "lucide-react"
 
 const info = [
@@ -64,17 +65,80 @@ const departments = [
 
 export function ContactSection() {
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  })
+
+  async function handleSubmit(
+    e: React.FormEvent<HTMLFormElement>,
+  ) {
+    e.preventDefault()
+
+    try {
+      setLoading(true)
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.message)
+      }
+
+      setSubmitted(true)
+
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+      })
+
+      setTimeout(() => {
+        setSubmitted(false)
+      }, 5000)
+    } catch (error) {
+      console.error(error)
+      alert("Failed to send message. Please try again.")
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  function handleChange(
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement
+    >,
+  ) {
+    const { name, value } = e.target
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }))
+  }
 
   return (
     <section className="relative overflow-hidden bg-[#f6f9fc] py-16 md:py-24">
-      {/* premium glow */}
       <div className="absolute inset-0">
         <div className="absolute left-0 top-10 h-72 w-72 rounded-full bg-primary/10 blur-[120px]" />
-        <div className="absolute right-0 bottom-0 h-72 w-72 rounded-full bg-sky-500/10 blur-[120px]" />
+        <div className="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-sky-500/10 blur-[120px]" />
       </div>
 
       <div className="relative mx-auto max-w-[1400px] px-4 sm:px-6">
-        {/* intro */}
         <div className="mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-primary">
             <Plane className="h-3.5 w-3.5" />
@@ -92,7 +156,6 @@ export function ContactSection() {
           </p>
         </div>
 
-        {/* cards */}
         <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
           {info.map(({ Icon, title, lines }) => (
             <div
@@ -111,7 +174,7 @@ export function ContactSection() {
                 {lines.map((line) => (
                   <p
                     key={line}
-                    className="text-sm leading-7 text-slate-600 break-words"
+                    className="break-words text-sm leading-7 text-slate-600"
                   >
                     {line}
                   </p>
@@ -121,9 +184,7 @@ export function ContactSection() {
           ))}
         </div>
 
-        {/* content */}
         <div className="mt-12 grid grid-cols-1 gap-8 xl:grid-cols-[1.15fr_0.85fr] md:mt-16">
-          {/* form */}
           <div className="rounded-[32px] border border-white/70 bg-white/90 p-6 shadow-2xl backdrop-blur-xl sm:p-10">
             <div className="flex flex-wrap items-center gap-3">
               <span className="rounded-full bg-primary/10 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-primary">
@@ -142,10 +203,7 @@ export function ContactSection() {
             </p>
 
             <form
-              onSubmit={(e) => {
-                e.preventDefault()
-                setSubmitted(true)
-              }}
+              onSubmit={handleSubmit}
               className="mt-8 space-y-5"
             >
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -154,6 +212,8 @@ export function ContactSection() {
                   label="Full Name"
                   type="text"
                   placeholder="Your full name"
+                  value={formData.name}
+                  onChange={handleChange}
                 />
 
                 <FormField
@@ -161,6 +221,8 @@ export function ContactSection() {
                   label="Email"
                   type="email"
                   placeholder="you@email.com"
+                  value={formData.email}
+                  onChange={handleChange}
                 />
               </div>
 
@@ -170,6 +232,8 @@ export function ContactSection() {
                   label="Phone Number"
                   type="tel"
                   placeholder="+234..."
+                  value={formData.phone}
+                  onChange={handleChange}
                 />
 
                 <FormField
@@ -177,6 +241,8 @@ export function ContactSection() {
                   label="Subject"
                   type="text"
                   placeholder="How can we help?"
+                  value={formData.subject}
+                  onChange={handleChange}
                 />
               </div>
 
@@ -190,8 +256,11 @@ export function ContactSection() {
 
                 <textarea
                   id="message"
+                  name="message"
                   rows={6}
                   required
+                  value={formData.message}
+                  onChange={handleChange}
                   placeholder="Tell us about your request..."
                   className="w-full rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm text-slate-800 placeholder:text-slate-400 outline-none transition-all focus:border-primary focus:ring-4 focus:ring-primary/10"
                 />
@@ -199,9 +268,15 @@ export function ContactSection() {
 
               <button
                 type="submit"
-                className="group inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-primary px-7 py-4 text-sm font-semibold uppercase tracking-wide text-white transition-all duration-300 hover:scale-[1.02] hover:bg-[color:var(--primary-hover)] sm:w-auto"
+                disabled={loading}
+                className="group inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-primary px-7 py-4 text-sm font-semibold uppercase tracking-wide text-white transition-all duration-300 hover:scale-[1.02] hover:bg-[color:var(--primary-hover)] disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
               >
-                {submitted ? (
+                {loading ? (
+                  <>
+                    <Loader2 className="h-5 w-5 animate-spin" />
+                    Sending...
+                  </>
+                ) : submitted ? (
                   <>
                     <Check className="h-5 w-5" />
                     Message Sent
@@ -217,9 +292,7 @@ export function ContactSection() {
             </form>
           </div>
 
-          {/* side panel */}
           <div className="space-y-8">
-            {/* department emails */}
             <div className="rounded-[32px] border border-white/70 bg-white/90 p-7 shadow-2xl backdrop-blur-xl sm:p-8">
               <h3 className="text-xl font-semibold text-[#08131d]">
                 Department Emails
@@ -246,7 +319,6 @@ export function ContactSection() {
               </div>
             </div>
 
-            {/* map */}
             <div className="overflow-hidden rounded-[32px] shadow-2xl">
               <iframe
                 title="Flourishing Skies Travels Office"
@@ -270,11 +342,17 @@ function FormField({
   label,
   type,
   placeholder,
+  value,
+  onChange,
 }: {
   id: string
   label: string
   type: string
   placeholder: string
+  value: string
+  onChange: (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => void
 }) {
   return (
     <div>
@@ -287,8 +365,11 @@ function FormField({
 
       <input
         id={id}
+        name={id}
         type={type}
         required
+        value={value}
+        onChange={onChange}
         placeholder={placeholder}
         className="h-14 w-full rounded-2xl border border-slate-200 bg-white px-5 text-sm text-slate-800 placeholder:text-slate-400 outline-none transition-all focus:border-primary focus:ring-4 focus:ring-primary/10"
       />
