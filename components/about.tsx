@@ -31,7 +31,7 @@ export function About() {
             Your Trusted Travel Partner for Life
           </h2>
           <p className="mt-5 text-pretty text-sm leading-relaxed text-gray-600 md:mt-6 md:text-base">
-            At FlourishingTravels, we believe travel should be effortless,
+            At Flourishing Skies Travels, we believe travel should be effortless,
             enriching and unforgettable. With over two decades of experience,{" "}
             {"we craft personalized itineraries that turn dreams into memories — whether it's a family holiday, a corporate trip or an educational tour."}
           </p>
@@ -39,7 +39,7 @@ export function About() {
           <ul className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 md:mt-8">
             {features.map((f) => (
               <li key={f} className="flex items-start gap-3">
-                <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-primary">
+                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary">
                   <Check className="h-3.5 w-3.5 text-white" strokeWidth={3} />
                 </span>
                 <span className="text-sm text-gray-700">{f}</span>

@@ -205,7 +205,7 @@ export default async function SearchResultsPage({
     <main className="min-h-screen bg-[#f5f7fa]">
       {/* top section */}
       <section className="bg-[#003b95] pb-10 pt-28">
-        <div className="mx-auto max-w-[1280px] px-4 sm:px-6">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <Link
             href="/"
             className="inline-flex items-center gap-2 text-2xl font-bold tracking-tight text-white sm:text-3xl"
