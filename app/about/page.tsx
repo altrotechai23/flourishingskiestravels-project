@@ -7,9 +7,9 @@ import { Testimonials } from "@/components/testimonials"
 import { SectionHeader } from "@/components/section-header"
 
 export const metadata: Metadata = {
-  title: "About Us | FlourishingTravels",
+  title: "About Us | Flourishing Skies Travels",
   description:
-    "Learn about FlourishingTravels — our story, our mission and the passionate team behind every flourishing journey.",
+    "Learn about Flourishing Skies Travels — our story, our mission and the passionate team behind every flourishing journey.",
 }
 
 const stats = [
@@ -23,7 +23,7 @@ export default function AboutPage() {
   return (
     <main>
       <PageBanner
-        title="About FlourishingTravels"
+        title="About Flourishing Skies Travels"
         subtitle="Two decades of crafting extraordinary journeys — and we're just getting started."
         image="/team.jpg"
       />
@@ -32,7 +32,7 @@ export default function AboutPage() {
 
       {/* Stats */}
       <section className="bg-[#0e2a3a] py-14 md:py-16">
-        <div className="mx-auto max-w-[1280px] px-4 sm:px-6">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8">
             {stats.map((s) => (
               <div
@@ -54,14 +54,14 @@ export default function AboutPage() {
 
       {/* Mission */}
       <section className="bg-white py-16 md:py-24">
-        <div className="mx-auto max-w-[1280px] px-4 sm:px-6">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <SectionHeader
             title="Our Mission & Vision"
             subtitle="We exist to make world-class travel accessible, memorable and meaningful for every traveler we serve."
           />
 
           <div className="mt-10 grid grid-cols-1 gap-8 md:mt-14 md:grid-cols-2">
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm shadow-xl">
+            <div className="relative aspect-4/3 w-full overflow-hidden rounded-sm shadow-xl">
               <Image
                 src="/team.jpg"
                 alt="Our team"
