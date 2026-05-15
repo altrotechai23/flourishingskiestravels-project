@@ -45,7 +45,7 @@ export async function POST(req: Request) {
     }
 
     const emoji = serviceEmoji[service] ?? "📩"
-    const adminEmail = process.env.ADMIN_EMAIL ?? "admin@yourtravelcompany.com"
+    const adminEmail = process.env.ADMIN_EMAIL ?? "info@flourishingskiestravels.com"
 
     // ── Build field rows for admin email ──────────────────────────────────────
     const extraRows = Object.entries(rest)
