@@ -11,18 +11,19 @@ export const metadata: Metadata = {
 }
 
 export default function ServicesPage() {
-  return (
-    <main>
-      <PageBanner
-        title="Our Services"
-        subtitle="Everything you need for a perfect trip — handled by trusted travel experts."
-        image="/service-ticket.jpg"
-      />
-      <Services />
-      <Newsletter />
-      <div className="relative z-40 -mt-28 sm:-mt-24 md:-mt-20">
-              <BookingSearch />
-            </div>
-    </main>
-  )
+  return <div>Not working</div>
+  // return (
+  //   <main>
+  //     <PageBanner
+  //       title="Our Services"
+  //       subtitle="Everything you need for a perfect trip — handled by trusted travel experts."
+  //       image="/service-ticket.jpg"
+  //     />
+  //     <Services />
+  //     <Newsletter />
+  //     <div className="relative z-40 -mt-28 sm:-mt-24 md:-mt-20">
+  //             <BookingSearch />
+  //           </div>
+  //   </main>
+  // )
 }

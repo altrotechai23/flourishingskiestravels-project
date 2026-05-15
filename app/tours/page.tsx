@@ -88,72 +88,73 @@ const tours = [
 ]
 
 export default function ToursPage() {
-  return (
-    <main>
-      <PageBanner
-        title="Our Tours"
-        subtitle="Unforgettable adventures to the world's most beautiful destinations."
-        image="/tour-dubai.jpg"
-      />
+  return <div>Not working</div>
+  // return (
+  //   <main>
+  //     <PageBanner
+  //       title="Our Tours"
+  //       subtitle="Unforgettable adventures to the world's most beautiful destinations."
+  //       image="/tour-dubai.jpg"
+  //     />
 
-      <section className="bg-[#f6f9fb] py-16 md:py-24">
-        <div className="mx-auto max-w-[1280px] px-4 sm:px-6">
-          <SectionHeader
-            title="Explore Our Tour Packages"
-            subtitle="Hand-picked destinations and fully curated experiences — all at the best prices, guaranteed."
-          />
+  //     <section className="bg-[#f6f9fb] py-16 md:py-24">
+  //       <div className="mx-auto max-w-[1280px] px-4 sm:px-6">
+  //         <SectionHeader
+  //           title="Explore Our Tour Packages"
+  //           subtitle="Hand-picked destinations and fully curated experiences — all at the best prices, guaranteed."
+  //         />
 
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 md:mt-14 lg:grid-cols-3 xl:grid-cols-4">
-            {tours.map((t) => (
-              <article
-                key={t.title}
-                className="group overflow-hidden rounded-sm bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-              >
-                <div className="relative aspect-[4/3] w-full overflow-hidden">
-                  <Image
-                    src={t.image || "/placeholder.svg"}
-                    alt={t.title}
-                    fill
-                    sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <span className="absolute left-3 top-3 rounded-sm bg-[#0e2a3a]/80 px-3 py-1 text-xs font-medium tracking-wider text-white backdrop-blur-sm">
-                    {t.category}
-                  </span>
-                </div>
-                <div className="p-5">
-                  <h3 className="text-lg font-semibold text-[#2a2a2a]">
-                    {t.title}
-                  </h3>
-                  <div className="mt-3 space-y-1.5 text-sm text-gray-600">
-                    <div className="flex items-center gap-2">
-                      <MapPin className="h-4 w-4 text-primary" />
-                      <span>{t.location}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Clock className="h-4 w-4 text-primary" />
-                      <span>{t.duration}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Users className="h-4 w-4 text-primary" />
-                      <span>{t.group}</span>
-                    </div>
-                  </div>
-                  <Link
-                    href="#booking"
-                    className="mt-5 inline-flex w-full items-center justify-center rounded-sm bg-primary px-4 py-2.5 text-xs font-semibold tracking-wider text-primary-foreground transition-colors hover:bg-[color:var(--primary-hover)]"
-                  >
-                    BOOK NOW
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-        <div className="relative z-40 -mt-28 sm:-mt-24 md:-mt-20">
-                      <BookingSearch />
-                    </div>
-      </section>
-    </main>
-  )
+  //         <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 md:mt-14 lg:grid-cols-3 xl:grid-cols-4">
+  //           {tours.map((t) => (
+  //             <article
+  //               key={t.title}
+  //               className="group overflow-hidden rounded-sm bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+  //             >
+  //               <div className="relative aspect-[4/3] w-full overflow-hidden">
+  //                 <Image
+  //                   src={t.image || "/placeholder.svg"}
+  //                   alt={t.title}
+  //                   fill
+  //                   sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+  //                   className="object-cover transition-transform duration-500 group-hover:scale-105"
+  //                 />
+  //                 <span className="absolute left-3 top-3 rounded-sm bg-[#0e2a3a]/80 px-3 py-1 text-xs font-medium tracking-wider text-white backdrop-blur-sm">
+  //                   {t.category}
+  //                 </span>
+  //               </div>
+  //               <div className="p-5">
+  //                 <h3 className="text-lg font-semibold text-[#2a2a2a]">
+  //                   {t.title}
+  //                 </h3>
+  //                 <div className="mt-3 space-y-1.5 text-sm text-gray-600">
+  //                   <div className="flex items-center gap-2">
+  //                     <MapPin className="h-4 w-4 text-primary" />
+  //                     <span>{t.location}</span>
+  //                   </div>
+  //                   <div className="flex items-center gap-2">
+  //                     <Clock className="h-4 w-4 text-primary" />
+  //                     <span>{t.duration}</span>
+  //                   </div>
+  //                   <div className="flex items-center gap-2">
+  //                     <Users className="h-4 w-4 text-primary" />
+  //                     <span>{t.group}</span>
+  //                   </div>
+  //                 </div>
+  //                 <Link
+  //                   href="#booking"
+  //                   className="mt-5 inline-flex w-full items-center justify-center rounded-sm bg-primary px-4 py-2.5 text-xs font-semibold tracking-wider text-primary-foreground transition-colors hover:bg-[color:var(--primary-hover)]"
+  //                 >
+  //                   BOOK NOW
+  //                 </Link>
+  //               </div>
+  //             </article>
+  //           ))}
+  //         </div>
+  //       </div>
+  //       <div className="relative z-40 -mt-28 sm:-mt-24 md:-mt-20">
+  //                     <BookingSearch />
+  //                   </div>
+  //     </section>
+  //   </main>
+  // )
 }
