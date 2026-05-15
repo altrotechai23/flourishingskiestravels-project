@@ -116,7 +116,7 @@ export function Hero() {
 
           <div className="mt-10">
             <Link
-              href="/gallery"
+              href="#booking"
               className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-4 text-sm font-semibold tracking-wider text-white shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-[color:var(--primary-hover)]"
             >
               {slide.cta}
