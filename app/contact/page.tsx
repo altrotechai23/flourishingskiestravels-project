@@ -3,6 +3,7 @@
 import type { Metadata } from "next"
 import { PageBanner } from "@/components/page-banner"
 import { ContactSection } from "@/components/contact-section"
+import { BookingSearch } from "@/components/booking-search"
 
 export const metadata: Metadata = {
   title: "Contact Us | Flourishing Skies Travels",
@@ -19,6 +20,9 @@ export default function ContactPage() {
         image="/contact-office.jpg"
       />
       <ContactSection />
+      <div className="relative z-40 -mt-28 sm:-mt-24 md:-mt-20">
+        <BookingSearch />
+      </div>
     </main>
   )
 }

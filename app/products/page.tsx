@@ -4,6 +4,7 @@ import Link from "next/link"
 import { Star, ShoppingBag } from "lucide-react"
 import { PageBanner } from "@/components/page-banner"
 import { SectionHeader } from "@/components/section-header"
+import { BookingSearch } from "@/components/booking-search"
 
 export const metadata: Metadata = {
   title: "Products | FlourishingTravels",
@@ -104,6 +105,9 @@ export default function ProductsPage() {
             ))}
           </div>
         </div>
+        <div className="relative z-40 -mt-28 sm:-mt-24 md:-mt-20">
+                <BookingSearch />
+              </div>
       </section>
     </main>
   )

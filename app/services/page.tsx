@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { PageBanner } from "@/components/page-banner"
 import { Services } from "@/components/services"
 import { Newsletter } from "@/components/newsletter"
+import { BookingSearch } from "@/components/booking-search"
 
 export const metadata: Metadata = {
   title: "Our Services | FlourishingTravels",
@@ -19,6 +20,9 @@ export default function ServicesPage() {
       />
       <Services />
       <Newsletter />
+      <div className="relative z-40 -mt-28 sm:-mt-24 md:-mt-20">
+              <BookingSearch />
+            </div>
     </main>
   )
 }

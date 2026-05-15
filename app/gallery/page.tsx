@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import { PageBanner } from "@/components/page-banner"
 import { SectionHeader } from "@/components/section-header"
+import { BookingSearch } from "@/components/booking-search"
 
 export const metadata: Metadata = {
   title: "Gallery | FlourishingTravels",
@@ -62,6 +63,9 @@ export default function GalleryPage() {
             ))}
           </div>
         </div>
+        <div className="relative z-40 -mt-28 sm:-mt-24 md:-mt-20">
+                <BookingSearch />
+              </div>
       </section>
     </main>
   )

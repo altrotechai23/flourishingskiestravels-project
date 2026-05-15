@@ -33,13 +33,6 @@ const serviceLinks = [
   "Logistics & Delivery",
 ]
 
-const contactNumbers = [
-  "+234 9075721310",
-  "+234 8137175997",
-  "+234 8106426962",
-  "+234 7047412754",
-]
-
 const departments = [
   {
     title: "General Inquiries",
@@ -56,6 +49,39 @@ const departments = [
   {
     title: "Visas & Tour Packages",
     email: "visasandtours@flourishingskiestravels.com",
+  },
+]
+
+const offices = [
+  {
+    country: "Nigeria",
+    address: "Ago Palace Way, Lagos",
+    phones: ["+2347047412754", "+2349075721310"],
+  },
+  {
+    country: "Benin Republic",
+    address: "Cotonou - Akpakpa",
+    phones: ["+2290197201883"],
+  },
+  {
+    country: "South Africa",
+    address: "Long Street, Cape Town",
+    phones: ["+27706416874"],
+  },
+  {
+    country: "Qatar",
+    address: "Doha - Conference Centre Street, Zone 61",
+    phones: ["+97455078611"],
+  },
+  {
+    country: "Cameroon",
+    address: "Douala - Rond Point Akwa",
+    phones: ["+237651166153"],
+  },
+  {
+    country: "Brazil",
+    address: "Galeria Predio Ita Republica - Sao Paulo",
+    phones: ["+5511968981824"],
   },
 ]
 
@@ -172,70 +198,45 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          {/* contact */}
+          {/* GLOBAL OFFICES */}
           <div>
-            <h3 className="text-lg font-semibold text-white">Contact Us</h3>
+            <h3 className="text-lg font-semibold text-white">Global Offices</h3>
 
-            <div className="mt-6 space-y-6">
-              {/* address */}
-              <div className="flex items-start gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/15 text-primary">
-                  <MapPin className="h-5 w-5" />
-                </div>
+            <div className="mt-6 grid gap-4">
+              {offices.map((office, i) => (
+                <div
+                  key={i}
+                  className="group rounded-2xl border border-white/10 bg-white/5 p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 hover:border-primary hover:bg-white/10"
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary/15 text-primary">
+                      <MapPin className="h-4 w-4" />
+                    </div>
 
-                <div className="text-sm leading-7 text-white/65">
-                  92 Ago Palace Way
-                  <br />
-                  Grandmate Bus Stop
-                  <br />
-                  Ago, Okota
-                  <br />
-                  Lagos
-                </div>
-              </div>
-
-              {/* phones */}
-              <div className="flex items-start gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/15 text-primary">
-                  <Phone className="h-5 w-5" />
-                </div>
-
-                <div className="space-y-2 text-sm text-white/65">
-                  {contactNumbers.map((phone) => (
-                    <a
-                      key={phone}
-                      href={`tel:${phone.replace(/\s/g, "")}`}
-                      className="block transition-colors hover:text-primary"
-                    >
-                      {phone}
-                    </a>
-                  ))}
-                </div>
-              </div>
-
-              {/* emails */}
-              <div className="flex items-start gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/15 text-primary">
-                  <Mail className="h-5 w-5" />
-                </div>
-
-                <div className="space-y-4">
-                  {departments.map((item) => (
-                    <div key={item.email}>
-                      <p className="text-xs font-semibold uppercase tracking-wide text-white/45">
-                        {item.title}
+                    <div className="text-sm">
+                      <p className="font-semibold text-white">
+                        {office.country} Office
                       </p>
 
-                      <a
-                        href={`mailto:${item.email}`}
-                        className="mt-1 block text-sm text-white/65 transition-colors hover:text-primary break-all"
-                      >
-                        {item.email}
-                      </a>
+                      <p className="text-white/60 text-xs mt-1">
+                        {office.address}
+                      </p>
+
+                      <div className="mt-2 space-y-1">
+                        {office.phones.map((phone) => (
+                          <a
+                            key={phone}
+                            href={`tel:${phone}`}
+                            className="block text-xs text-white/70 hover:text-primary transition-colors"
+                          >
+                            {phone}
+                          </a>
+                        ))}
+                      </div>
                     </div>
-                  ))}
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

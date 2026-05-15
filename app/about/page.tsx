@@ -5,6 +5,7 @@ import { PageBanner } from "@/components/page-banner"
 import { About } from "@/components/about"
 import { Testimonials } from "@/components/testimonials"
 import { SectionHeader } from "@/components/section-header"
+import { BookingSearch } from "@/components/booking-search"
 
 export const metadata: Metadata = {
   title: "About Us | Flourishing Skies Travels",
@@ -97,6 +98,9 @@ export default function AboutPage() {
       </section>
 
       <Testimonials />
+      <div className="relative z-40 -mt-28 sm:-mt-24 md:-mt-20">
+              <BookingSearch />
+      </div>
     </main>
   )
 }
