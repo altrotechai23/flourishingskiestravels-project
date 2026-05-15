@@ -41,7 +41,7 @@ const tours = [
   },
   {
     title: "Qatar",
-    location: "New York, USA",
+    location: "Doha",
     duration: "5 Days / 4 Nights",
     group: "2-10 People",
     price: "$1,749",
@@ -50,7 +50,7 @@ const tours = [
   },
   {
     title: "South Africa",
-    location: "Santorini, Greece",
+    location: "Cape Town",
     duration: "6 Days / 5 Nights",
     group: "2-6 People",
     price: "$2,099",
@@ -68,7 +68,7 @@ const tours = [
   },
   {
     title: "Tanzania Zanzibar",
-    location: "Kyoto, Japan",
+    location: "Zanzibar",
     duration: "8 Days / 7 Nights",
     group: "2-10 People",
     price: "$2,299",
@@ -139,7 +139,7 @@ export default function ToursPage() {
                     </div>
                   </div>
                   <Link
-                    href="/contact"
+                    href="#booking"
                     className="mt-5 inline-flex w-full items-center justify-center rounded-sm bg-primary px-4 py-2.5 text-xs font-semibold tracking-wider text-primary-foreground transition-colors hover:bg-[color:var(--primary-hover)]"
                   >
                     BOOK NOW

@@ -16,7 +16,7 @@ import {
 const info = [
   {
     Icon: MapPin,
-    title: "Head Office",
+    title: "Our offices",
     lines: [
       "92 Ago Palace Way",
       "Grandmate Bus Stop",
