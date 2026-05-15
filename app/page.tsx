@@ -50,7 +50,7 @@ export default function HomePage() {
 
       <Services />
 
-      <FeaturedTours />
+      {/* <FeaturedTours /> */}
 
       <Testimonials />
 
