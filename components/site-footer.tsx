@@ -55,8 +55,8 @@ const departments = [
 const offices = [
   {
     country: "Nigeria",
-    address: "Ago Palace Way, Lagos",
-    phones: ["+2347047412754", "+2349075721310"],
+    address: "Ago Palace Way okota, Lagos",
+    phones: ["+2347047412754", "+2349075721310", "+2348106426962", "+2348137175997"],
   },
   {
     country: "Benin Republic",
@@ -231,6 +231,8 @@ export function SiteFooter() {
                           >
                             {phone}
                           </a>
+                          
+                          
                         ))}
                       </div>
                     </div>

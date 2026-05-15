@@ -29,7 +29,7 @@ export function WhatsAppButton() {
 
       {/* Button */}
       <div className="relative w-12 h-12 rounded-full bg-[#25D366] shadow-lg shadow-[#25D366]/30 flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-br from-white/20 to-transparent" />
 
         <FaWhatsapp className="w-6 h-6 text-white relative z-10" />
       </div>
