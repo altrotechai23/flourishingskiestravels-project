@@ -513,7 +513,7 @@ export function BookingSearch() {
                 <button
                   onClick={handleSubmit}
                   disabled={status === "loading"}
-                  className="flex min-w-180 items-center justify-center gap-2.5 rounded-xl px-8 py-3.5 text-sm font-bold text-white shadow-lg transition hover:opacity-90 disabled:opacity-60"
+                  className="flex  items-center justify-center gap-2.5 rounded-xl px-8 py-3.5 text-sm font-bold text-white shadow-lg transition hover:opacity-90 disabled:opacity-60"
                   style={{ backgroundColor: meta.color }}
                 >
                   {status === "loading" ? (
