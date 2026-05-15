@@ -50,7 +50,7 @@ const offices = [
   {
     country: "Nigeria",
     address: "Ago Palace Way, Lagos",
-    phones: ["+2347047412754", "+2349075721310"],
+    phones: ["+2347047412754", "+2349075721310", "+2348106426962","+2348137175997"],
   },
   {
     country: "Benin Republic",
