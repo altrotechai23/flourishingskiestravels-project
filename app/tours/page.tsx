@@ -40,7 +40,7 @@ const tours = [
     category: "Beach",
   },
   {
-    title: "New York City Break",
+    title: "Qatar",
     location: "New York, USA",
     duration: "5 Days / 4 Nights",
     group: "2-10 People",
@@ -49,7 +49,7 @@ const tours = [
     category: "City",
   },
   {
-    title: "Santorini Sunset Tour",
+    title: "South Africa",
     location: "Santorini, Greece",
     duration: "6 Days / 5 Nights",
     group: "2-6 People",
@@ -67,7 +67,7 @@ const tours = [
     category: "Luxury",
   },
   {
-    title: "Kyoto Cultural Journey",
+    title: "Tanzania Zanzibar",
     location: "Kyoto, Japan",
     duration: "8 Days / 7 Nights",
     group: "2-10 People",
@@ -118,9 +118,6 @@ export default function ToursPage() {
                   />
                   <span className="absolute left-3 top-3 rounded-sm bg-[#0e2a3a]/80 px-3 py-1 text-xs font-medium tracking-wider text-white backdrop-blur-sm">
                     {t.category}
-                  </span>
-                  <span className="absolute right-3 top-3 bg-primary px-3 py-1 text-xs font-semibold tracking-wider text-primary-foreground">
-                    {t.price}
                   </span>
                 </div>
                 <div className="p-5">
