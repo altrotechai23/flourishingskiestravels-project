@@ -1,11 +1,14 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { MessageCircle } from 'lucide-react'
+import { FaWhatsapp } from 'react-icons/fa'
 
 export function WhatsAppButton() {
   const whatsappNumber = '2349075721310'
-  const message = encodeURIComponent("Hi! I'm interested in your ceiling and plumbing services. Can you provide more information?")
+  const message = encodeURIComponent(
+    "Hi! I'm interested in your ceiling and plumbing services. Can you provide more information?"
+  )
+
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`
 
   return (
@@ -23,17 +26,20 @@ export function WhatsAppButton() {
     >
       {/* Pulse animation ring */}
       <span className="absolute inset-0 rounded-full bg-[#25D366] animate-pulse-whatsapp" />
-      
+
       {/* Button */}
       <div className="relative w-12 h-12 rounded-full bg-[#25D366] shadow-lg shadow-[#25D366]/30 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent" />
-        <MessageCircle className="w-5 h-5 text-white relative z-10 fill-white" />
+
+        <FaWhatsapp className="w-6 h-6 text-white relative z-10" />
       </div>
 
       {/* Tooltip */}
       <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
         <div className="bg-white px-4 py-2 rounded-lg whitespace-nowrap shadow-lg border border-border">
-          <span className="text-sm font-medium text-foreground">Chat with us!</span>
+          <span className="text-sm font-medium text-foreground">
+            Chat with us!
+          </span>
         </div>
       </div>
     </motion.a>
