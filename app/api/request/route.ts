@@ -194,15 +194,15 @@ export async function POST(req: Request) {
     // ── Send both emails in parallel ──────────────────────────────────────────
     await Promise.all([
       resend.emails.send({
-        from: "Travel Requests <onboarding@resend.dev>", // ← update to your verified Resend domain
-        to: "altrotechai23@gmail.com",
+        from: "Travel Requests <onboarding@flourishingskiestravels.com>", // ← update to your verified Resend domain
+        to: "info@flourishingskiestravels.com",
         subject: `${emoji} New ${service} Request — ${name}`,
         html: adminHtml,
         replyTo: email,
       }),
       resend.emails.send({
-        from: "Your Travel Company <onboarding@resend.dev>", // ← update
-        to: "altrotechai23@gmail.com",
+        from: "Your Travel Company <onboarding@flourishingskiestravels.com>", // ← update
+        to: email,
         subject: `✅ We've received your ${service} request`,
         html: clientHtml,
       }),

@@ -33,8 +33,8 @@ export async function POST(req: Request) {
     }
 
     await resend.emails.send({
-      from: "Flourishing Skies <onboarding@resend.dev>",
-      to: "altrotechai23@gmail.com",
+      from: "Flourishing Skies <info@flourishingskiestravels.com>",
+      to: ["info@flourishingskiestravels.com"],
       replyTo: email,
       subject: `New Inquiry • ${subject}`,
       react: ContactEmail({
