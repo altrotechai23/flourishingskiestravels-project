@@ -15,7 +15,7 @@ export default function ContactPage() {
     <main>
       <PageBanner
         title="Contact Us"
-        subtitle="Speak with our team for bookings, visas, airport transfers, logistics, delivery services and premium travel experiences."
+        subtitle="Speak with our team for bookings, visas, airport transfers, logistics, delivery services and premium travel experiences. Cheap flight tickets both domestic and international"
         image="/contact-office.jpg"
       />
       <ContactSection />

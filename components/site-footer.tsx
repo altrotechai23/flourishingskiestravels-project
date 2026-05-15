@@ -69,9 +69,9 @@ export function SiteFooter() {
         <div className="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-sky-500/10 blur-[120px]" />
       </div>
 
-      <div className="relative mx-auto max-w-[1400px] px-4 py-14 sm:px-6 md:py-20">
+      <div className="relative mx-auto max-w-350 px-4 py-14 sm:px-6 md:py-20">
         {/* top CTA */}
-        <div className="mb-12 rounded-[28px] border border-white/10 bg-white/[0.04] p-5 backdrop-blur-xl sm:p-7">
+        <div className="mb-12 rounded-[28px] border border-white/10 bg-white/4 p-5 backdrop-blur-xl sm:p-7">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">
@@ -89,7 +89,7 @@ export function SiteFooter() {
 
             <Link
               href="/contact"
-              className="group inline-flex h-14 items-center justify-center gap-2 rounded-2xl bg-primary px-7 text-sm font-semibold text-white transition-all duration-300 hover:scale-[1.02] hover:bg-[color:var(--primary-hover)]"
+              className="group inline-flex h-14 items-center justify-center gap-2 rounded-2xl bg-primary px-7 text-sm font-semibold text-white transition-all duration-300 hover:scale-[1.02] hover:bg-primary-hover"
             >
               Book With Us
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -103,10 +103,10 @@ export function SiteFooter() {
           <div>
             <div className="inline-flex rounded-2xl bg-white p-3 shadow-2xl">
               <Image
-                src="/log.jpg"
+                src="/new-logo.jpeg"
                 alt="Flourishing Skies Travels"
                 width={170}
-                height={60}
+                height={170}
                 className="h-12 w-auto object-contain"
               />
             </div>

@@ -6,6 +6,7 @@ import { Navbar } from "@/components/navbar"
 import { SiteFooter } from "@/components/site-footer"
 import { ScrollTop } from "@/components/scroll-top"
 import "./globals.css"
+import { WhatsAppButton } from "@/components/whatsapp-button"
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -52,6 +53,7 @@ export default function RootLayout({
         <SiteFooter />
         <ScrollTop />
         {process.env.NODE_ENV === "production" && <Analytics />}
+        <WhatsAppButton />
       </body>
     </html>
   )

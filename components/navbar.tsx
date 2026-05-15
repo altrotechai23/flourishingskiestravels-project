@@ -39,7 +39,7 @@ export function Navbar() {
             >
               <div className="flex items-center rounded-xl shadow-lg">
                 <Image
-                  src="/log.jpg"
+                  src="/new-logo.jpeg"
                   alt="Flourishing Travels"
                   width={170}
                   height={50}
@@ -81,7 +81,7 @@ export function Navbar() {
             {/* CTA + Mobile Button */}
             <div className="flex items-center gap-3">
               <Link
-                href="/contact"
+                href="#booking"
                 className="hidden rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-white transition hover:bg-[color:var(--primary-hover)] lg:inline-flex"
               >
                 Book Now
