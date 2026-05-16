@@ -36,26 +36,26 @@ import { Testimonials } from "@/components/testimonials"
 import { Newsletter } from "@/components/newsletter"
 
 export default function HomePage() {
-  return <div>Not working</div>
-  // return (
-  //   <main className="relative overflow-hidden bg-[#f5f7fa]">
-  //     <Hero />
+  // return <div>Not working</div>
+  return (
+    <main className="relative overflow-hidden bg-[#f5f7fa]">
+      <Hero />
 
-  //     <div className="relative z-40 -mt-28 sm:-mt-24 md:-mt-20">
-  //       <BookingSearch />
-  //     </div>
+      <div className="relative z-40 -mt-28 sm:-mt-24 md:-mt-20">
+        <BookingSearch />
+      </div>
 
-  //     {/* <WhyChooseUs /> */}
+      {/* <WhyChooseUs /> */}
 
-  //     {/* <OffersSection /> */}
+      {/* <OffersSection /> */}
 
-  //     <Services />
+      <Services />
 
-  //     {/* <FeaturedTours /> */}
+      {/* <FeaturedTours /> */}
 
-  //     <Testimonials />
+      <Testimonials />
 
-  //     <Newsletter />
-  //   </main>
-  // )
+      <Newsletter />
+    </main>
+  )
 }

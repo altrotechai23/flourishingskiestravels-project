@@ -12,18 +12,18 @@ export const metadata: Metadata = {
 }
 
 export default function ContactPage() {
-  return <div>Not working</div>
-  // return (
-  //   <main>
-  //     <PageBanner
-  //       title="Contact Us"
-  //       subtitle="Speak with our team for bookings, visas, airport transfers, logistics, delivery services and premium travel experiences. Cheap flight tickets both domestic and international"
-  //       image="/contact-office.jpg"
-  //     />
-  //     <ContactSection />
-  //     <div className="relative z-40 -mt-28 sm:-mt-24 md:-mt-20">
-  //       <BookingSearch />
-  //     </div>
-  //   </main>
-  // )
+  // return <div>Not working</div>
+  return (
+    <main>
+      <PageBanner
+        title="Contact Us"
+        subtitle="Speak with our team for bookings, visas, airport transfers, logistics, delivery services and premium travel experiences. Cheap flight tickets both domestic and international"
+        image="/contact-office.jpg"
+      />
+      <ContactSection />
+      <div className="relative z-40 -mt-28 sm:-mt-24 md:-mt-20">
+        <BookingSearch />
+      </div>
+    </main>
+  )
 }
