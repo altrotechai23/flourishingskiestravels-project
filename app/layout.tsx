@@ -29,6 +29,15 @@ export const metadata: Metadata = {
     "hotels",
     "FlourishingTravels",
   ],
+  icons: {
+    icon: [
+      { url: "/new-logo.jpeg", type: "image/jpeg" },
+    ],
+    apple: [
+      { url: "/new-logo.jpeg", type: "image/jpeg" },
+    ],
+    shortcut: "/new-logo.jpeg",
+  },
 }
 
 export const viewport: Viewport = {
@@ -43,7 +52,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${poppins.variable} bg-background`}>
+    <html lang="en" className={`${poppins.variable} bg-background`} suppressHydrationWarning>
       <body className="font-sans antialiased">
         <header className="relative">
           {/* <TopBar /> */}
