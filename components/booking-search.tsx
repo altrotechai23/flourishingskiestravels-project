@@ -75,12 +75,12 @@ const ALL_COUNTRIES = getCountryDataList()
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 const services: ServiceId[] = [
+  "Flight Bookings",
   "Travel Consultancy",
   "Visa Assistance",
   "Tour Bookings",
   "Hotel Bookings",
   "Travel Insurance",
-  "Flight Bookings",
   "Flight Hire / Charter",
   "Airport Transfers",
   "Airport Assistance",
@@ -99,6 +99,20 @@ const clientFields: FieldDef[] = [
 ]
 
 const serviceMap: Record<ServiceId, ServiceMeta> = {
+  "Flight Bookings": {
+    icon: <Plane className="h-4 w-4" />, color: "#3b82f6",
+    fields: [
+      ...clientFields,
+      { id: "origin",      label: "Departure City / Airport",      type: "text",    placeholder: "Cape Town (CPT)", required: true },
+      { id: "destination", label: "Destination",                   type: "country", required: true },
+      { id: "departDate",  label: "Departure Date",                type: "date",    required: true },
+      { id: "returnDate",  label: "Return Date (blank = one-way)", type: "date" },
+      { id: "adults",      label: "Adults",                        type: "number",  placeholder: "1", required: true },
+      { id: "children",    label: "Children",                      type: "number",  placeholder: "0" },
+      { id: "cabinClass",  label: "Cabin Class",                   type: "select",  options: ["Economy", "Premium Economy", "Business", "First Class"], required: true },
+      { id: "notes",       label: "Special Requests",              type: "textarea", placeholder: "Meal preferences, seat preferences, etc." },
+    ],
+  },
   "Travel Consultancy": {
     icon: <HelpCircle className="h-4 w-4" />, color: "#6366f1",
     fields: [
@@ -156,20 +170,6 @@ const serviceMap: Record<ServiceId, ServiceMeta> = {
       { id: "people",      label: "Number of Travellers", type: "number",  placeholder: "1", required: true },
       { id: "coverType",   label: "Cover Type",           type: "select",  options: ["Single Trip", "Multi-Trip Annual", "Family", "Business", "Medical Only"], required: true },
       { id: "notes",       label: "Pre-existing Conditions / Notes", type: "textarea", placeholder: "Any medical conditions we should know about?" },
-    ],
-  },
-  "Flight Bookings": {
-    icon: <Plane className="h-4 w-4" />, color: "#3b82f6",
-    fields: [
-      ...clientFields,
-      { id: "origin",      label: "Departure City / Airport",      type: "text",    placeholder: "Cape Town (CPT)", required: true },
-      { id: "destination", label: "Destination",                   type: "country", required: true },
-      { id: "departDate",  label: "Departure Date",                type: "date",    required: true },
-      { id: "returnDate",  label: "Return Date (blank = one-way)", type: "date" },
-      { id: "adults",      label: "Adults",                        type: "number",  placeholder: "1", required: true },
-      { id: "children",    label: "Children",                      type: "number",  placeholder: "0" },
-      { id: "cabinClass",  label: "Cabin Class",                   type: "select",  options: ["Economy", "Premium Economy", "Business", "First Class"], required: true },
-      { id: "notes",       label: "Special Requests",              type: "textarea", placeholder: "Meal preferences, seat preferences, etc." },
     ],
   },
   "Flight Hire / Charter": {

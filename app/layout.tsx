@@ -55,7 +55,6 @@ export default function RootLayout({
     <html lang="en" className={`${poppins.variable} bg-background`} suppressHydrationWarning>
       <body className="font-sans antialiased">
         <header className="relative">
-          {/* <TopBar /> */}
           <Navbar />
         </header>
         {children}
