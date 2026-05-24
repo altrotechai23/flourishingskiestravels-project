@@ -461,8 +461,15 @@ function FieldInput({
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 
-export function BookingSearch() {
-  const [service, setService] = useState<ServiceId>("Hotel Bookings")
+type BookingSearchProps = {
+  serviceName?: ServiceId
+}
+
+export function BookingSearch({
+  serviceName = "Hotel Bookings",
+}: BookingSearchProps) {
+  const [service, setService] = useState<ServiceId>(serviceName)
+
   const [formData, setFormData] = useState<Record<string, string>>({})
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
   const [errorMsg, setErrorMsg] = useState("")
@@ -474,19 +481,24 @@ export function BookingSearch() {
 
   const handleSubmit = async () => {
     const missing = meta.fields.filter((f) => f.required && !formData[f.id]?.trim())
+
     if (missing.length > 0) {
       setErrorMsg(`Please fill in: ${missing.map((f) => f.label).join(", ")}`)
       return
     }
+
     setErrorMsg("")
     setStatus("loading")
+
     try {
       const res = await fetch("/api/request", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ service, ...formData }),
       })
+
       if (!res.ok) throw new Error("Failed to send")
+
       setStatus("success")
       setFormData({})
     } catch {
@@ -497,7 +509,7 @@ export function BookingSearch() {
 
   return (
     <section id="booking" className="relative z-30 pt-24 px-3 pb-14 sm:px-4 md:pt-28 bg-secondary">
-      <div className="mx-auto max-w-[1280px]">
+      <div className="mx-auto max-w-1280">
 
         {/* ── Service Tabs ── */}
         <div className="mb-5 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">

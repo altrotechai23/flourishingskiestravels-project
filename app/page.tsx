@@ -42,7 +42,7 @@ export default function HomePage() {
       <Hero />
 
       <div className="relative z-40 -mt-28 sm:-mt-24 md:-mt-20">
-        <BookingSearch />
+        <BookingSearch serviceName="Flight Bookings" />
       </div>
 
       {/* <WhyChooseUs /> */}

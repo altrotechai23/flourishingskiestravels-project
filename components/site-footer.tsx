@@ -231,8 +231,7 @@ export function SiteFooter() {
                           >
                             {phone}
                           </a>
-                          
-                          
+                               
                         ))}
                       </div>
                     </div>

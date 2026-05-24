@@ -5,6 +5,7 @@ import { MapPin, Clock, Users } from "lucide-react"
 import { PageBanner } from "@/components/page-banner"
 import { SectionHeader } from "@/components/section-header"
 import { BookingSearch } from "@/components/booking-search"
+import BookWithUsButton from "@/components/BookWithUsButton"
 
 export const metadata: Metadata = {
   title: "Tours | FlourishingTravels",
@@ -98,7 +99,7 @@ export default function ToursPage() {
       />
 
       <section className="bg-[#f6f9fb] py-16 md:py-24">
-        <div className="mx-auto max-w-[1280px] px-4 sm:px-6">
+        <div className="mx-auto max-w-1280 px-4 sm:px-6">
           <SectionHeader
             title="Explore Our Tour Packages"
             subtitle="Hand-picked destinations and fully curated experiences — all at the best prices, guaranteed."
@@ -110,7 +111,7 @@ export default function ToursPage() {
                 key={t.title}
                 className="group overflow-hidden rounded-sm bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
-                <div className="relative aspect-[4/3] w-full overflow-hidden">
+                <div className="relative aspect-4/3 w-full overflow-hidden">
                   <Image
                     src={t.image || "/placeholder.svg"}
                     alt={t.title}
@@ -140,20 +141,15 @@ export default function ToursPage() {
                       <span>{t.group}</span>
                     </div>
                   </div>
-                  <Link
-                    href="#booking"
-                    className="mt-5 inline-flex w-full items-center justify-center rounded-sm bg-primary px-4 py-2.5 text-xs font-semibold tracking-wider text-primary-foreground transition-colors hover:bg-[color:var(--primary-hover)]"
-                  >
-                    BOOK NOW
-                  </Link>
+                  <BookWithUsButton />
                 </div>
               </article>
             ))}
           </div>
         </div>
-        <div className="relative z-40 -mt-28 sm:-mt-24 md:-mt-20">
-                      <BookingSearch />
-                    </div>
+        <div className="relative mt-28 sm:-mt-24 md:mt-20">
+            <BookingSearch serviceName="Tour Bookings" />
+        </div>
       </section>
     </main>
   )

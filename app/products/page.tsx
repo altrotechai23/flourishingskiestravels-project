@@ -106,7 +106,7 @@ export default function ProductsPage() {
             ))}
           </div>
         </div>
-        <div className="relative z-40 -mt-28 sm:-mt-24 md:-mt-20">
+        <div className="relative mt-28 sm:mt-24 md:mt-20">
                 <BookingSearch />
               </div>
       </section>
