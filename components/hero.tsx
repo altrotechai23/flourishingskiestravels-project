@@ -115,12 +115,16 @@ export function Hero() {
           </p>
 
           <div className="mt-10">
-            <Link
-              href="#booking"
-              className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-4 text-sm font-semibold tracking-wider text-white shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-[color:var(--primary-hover)]"
+            <button
+              onClick={() => {
+                document
+                  .getElementById("booking")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }}
+              className="hidden rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-white lg:inline-flex"
             >
-              {slide.cta}
-            </Link>
+              Book Now
+            </button>
           </div>
         </div>
       </div>

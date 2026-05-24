@@ -11,6 +11,7 @@ import {
   Youtube,
   ArrowRight,
 } from "lucide-react"
+import BookWithUsButton from "./BookWithUsButton";
 
 const quickLinks: { label: string; href: string }[] = [
   { label: "Home", href: "/" },
@@ -113,13 +114,8 @@ export function SiteFooter() {
               </p>
             </div>
 
-            <Link
-              href="/contact"
-              className="group inline-flex h-14 items-center justify-center gap-2 rounded-2xl bg-primary px-7 text-sm font-semibold text-white transition-all duration-300 hover:scale-[1.02] hover:bg-primary-hover"
-            >
-              Book With Us
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
+            
+            <BookWithUsButton/>
           </div>
         </div>
 
@@ -137,11 +133,15 @@ export function SiteFooter() {
               />
             </div>
 
-            <p className="mt-6 text-sm leading-7 text-white/65">
-              Flourishing Skies Travels delivers premium travel experiences,
-              business travel solutions, visa support, airport services,
-              logistics and concierge-level customer service built for modern
-              travellers.
+            <p className="mt-6 text-sm leading-7 text-primary">
+              Flourishing skies travels and tours. <br />
+              Premium Travel Consultancy services <br />
+              Flight bookings and reservations <br />
+              Visa assistance <br />
+              Hotel bookings <br />
+              Travel insurance <br />
+              Airport assistance <br />
+              Airport transfers. <br />
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">

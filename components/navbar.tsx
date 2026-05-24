@@ -80,12 +80,16 @@ export function Navbar() {
 
             {/* CTA + Mobile Button */}
             <div className="flex items-center gap-3">
-              <Link
-                href="#booking"
-                className="hidden rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-white transition hover:bg-[color:var(--primary-hover)] lg:inline-flex"
+              <button
+                onClick={() => {
+                  document
+                    .getElementById("booking")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }}
+                className="hidden rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-white lg:inline-flex"
               >
                 Book Now
-              </Link>
+              </button>
 
               <button
                 type="button"
