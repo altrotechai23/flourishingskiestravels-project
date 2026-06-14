@@ -217,7 +217,7 @@ export function SiteFooter() {
             href={`mailto:${department.email}`}
             className="mt-2 flex items-center gap-2 text-xs text-white/65 transition-colors hover:text-primary break-all"
           >
-            <Mail className="h-3.5 w-3.5 shrink-0" />
+            <Mail className="h-1.5 w-1.5 shrink-0" />
             <span>{department.email}</span>
           </a>
         </div>
