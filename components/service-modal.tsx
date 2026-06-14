@@ -402,7 +402,6 @@ function FieldInput({
       <textarea
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        placeholder={field.placeholder}
         rows={3}
         className={`${base} resize-none`}
         style={style}
@@ -422,7 +421,6 @@ function FieldInput({
         type={field.type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        placeholder={field.placeholder}
         className={`${base} ${field.icon ? "pl-9" : ""}`}
         style={style}
       />
