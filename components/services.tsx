@@ -136,7 +136,7 @@ export function Services() {
         <div className="relative mx-auto max-w-[1280px] px-4 sm:px-6">
           <SectionHeader
             title="Our Professional Services"
-            subtitle="Based on our wide network of professional partners across the world, vast experience, highly trained staff with deep knowledge and high level of expertise in educational tourism, we organize premium travel solutions tailored to every need."
+            subtitle="We have high level of expertise in flight bookings , both domestic and international flights, visa assistance for all countries, travel insurance, vacation/honey moon packages, study abroad programs, employment visas as well as freelance and special events visas."
           />
 
           <div className="mt-14 grid grid-cols-1 gap-6 sm:gap-7 md:grid-cols-2 lg:grid-cols-3">
