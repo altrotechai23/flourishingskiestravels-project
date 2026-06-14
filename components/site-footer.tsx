@@ -120,127 +120,153 @@ export function SiteFooter() {
         </div>
 
         {/* grid */}
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-4 xl:gap-12">
-          {/* brand */}
-          <div>
-            <div className="inline-flex rounded-2xl bg-white p-3 shadow-2xl">
-              <Image
-                src="/new-logo.jpeg"
-                alt="Flourishing Skies Travels"
-                width={170}
-                height={170}
-                className="h-12 w-auto object-contain"
-              />
+        {/* grid */}
+<div className="grid grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-5 xl:gap-12">
+  {/* brand */}
+  <div>
+    <div className="inline-flex rounded-2xl bg-white p-3 shadow-2xl">
+      <Image
+        src="/new-logo.jpeg"
+        alt="Flourishing Skies Travels"
+        width={170}
+        height={170}
+        className="h-12 w-auto object-contain"
+      />
+    </div>
+
+    <p className="mt-6 text-sm leading-7 text-primary">
+      Flourishing skies travels and tours. <br />
+      Premium Travel Consultancy services <br />
+      Flight bookings and reservations <br />
+      Visa assistance <br />
+      Hotel bookings <br />
+      Travel insurance <br />
+      Airport assistance <br />
+      Airport transfers. <br />
+    </p>
+
+    <div className="mt-6 flex flex-wrap gap-3">
+      {[Facebook, Twitter, Instagram, Linkedin, Youtube].map(
+        (Icon, i) => (
+          <a
+            key={i}
+            href="#"
+            className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-white/80 transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:bg-primary hover:text-white"
+            aria-label="Social"
+          >
+            <Icon className="h-4 w-4" />
+          </a>
+        ),
+      )}
+    </div>
+  </div>
+
+  {/* quick links */}
+  <div>
+    <h3 className="text-lg font-semibold text-white">Quick Links</h3>
+
+    <ul className="mt-6 space-y-4">
+      {quickLinks.map((item) => (
+        <li key={item.href}>
+          <Link
+            href={item.href}
+            className="group inline-flex items-center gap-2 text-sm text-white/65 transition-colors hover:text-primary"
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-primary/70 transition-transform group-hover:scale-150" />
+            {item.label}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  {/* services */}
+  <div>
+    <h3 className="text-lg font-semibold text-white">Our Services</h3>
+
+    <ul className="mt-6 space-y-4">
+      {serviceLinks.map((item) => (
+        <li key={item}>
+          <Link
+            href="/services"
+            className="group inline-flex items-start gap-2 text-sm text-white/65 transition-colors hover:text-primary"
+          >
+            <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary/70 transition-transform group-hover:scale-150" />
+            <span>{item}</span>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  {/* departments */}
+  <div>
+    <h3 className="text-lg font-semibold text-white">Departments</h3>
+
+    <div className="mt-6 space-y-4">
+      {departments.map((department) => (
+        <div
+          key={department.email}
+          className="rounded-2xl border border-white/10 bg-white/5 p-4 transition-all duration-300 hover:border-primary hover:bg-white/10"
+        >
+          <p className="text-sm font-semibold text-white">
+            {department.title}
+          </p>
+
+          <a
+            href={`mailto:${department.email}`}
+            className="mt-2 flex items-center gap-2 text-xs text-white/65 transition-colors hover:text-primary break-all"
+          >
+            <Mail className="h-3.5 w-3.5 shrink-0" />
+            <span>{department.email}</span>
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  {/* GLOBAL OFFICES */}
+  <div>
+    <h3 className="text-lg font-semibold text-white">Global Offices</h3>
+
+    <div className="mt-6 grid gap-4">
+      {offices.map((office, i) => (
+        <div
+          key={i}
+          className="group rounded-2xl border border-white/10 bg-white/5 p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 hover:border-primary hover:bg-white/10"
+        >
+          <div className="flex items-start gap-3">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary/15 text-primary">
+              <MapPin className="h-4 w-4" />
             </div>
 
-            <p className="mt-6 text-sm leading-7 text-primary">
-              Flourishing skies travels and tours. <br />
-              Premium Travel Consultancy services <br />
-              Flight bookings and reservations <br />
-              Visa assistance <br />
-              Hotel bookings <br />
-              Travel insurance <br />
-              Airport assistance <br />
-              Airport transfers. <br />
-            </p>
+            <div className="text-sm">
+              <p className="font-semibold text-white">
+                {office.country} Office
+              </p>
 
-            <div className="mt-6 flex flex-wrap gap-3">
-              {[Facebook, Twitter, Instagram, Linkedin, Youtube].map(
-                (Icon, i) => (
+              <p className="text-white/60 text-xs mt-1">
+                {office.address}
+              </p>
+
+              <div className="mt-2 space-y-1">
+                {office.phones.map((phone) => (
                   <a
-                    key={i}
-                    href="#"
-                    className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-white/80 transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:bg-primary hover:text-white"
-                    aria-label="Social"
+                    key={phone}
+                    href={`tel:${phone}`}
+                    className="block text-xs text-white/70 hover:text-primary transition-colors"
                   >
-                    <Icon className="h-4 w-4" />
+                    {phone}
                   </a>
-                ),
-              )}
-            </div>
-          </div>
-
-          {/* quick links */}
-          <div>
-            <h3 className="text-lg font-semibold text-white">Quick Links</h3>
-
-            <ul className="mt-6 space-y-4">
-              {quickLinks.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="group inline-flex items-center gap-2 text-sm text-white/65 transition-colors hover:text-primary"
-                  >
-                    <span className="h-1.5 w-1.5 rounded-full bg-primary/70 transition-transform group-hover:scale-150" />
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* services */}
-          <div>
-            <h3 className="text-lg font-semibold text-white">Our Services</h3>
-
-            <ul className="mt-6 space-y-4">
-              {serviceLinks.map((item) => (
-                <li key={item}>
-                  <Link
-                    href="/services"
-                    className="group inline-flex items-start gap-2 text-sm text-white/65 transition-colors hover:text-primary"
-                  >
-                    <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary/70 transition-transform group-hover:scale-150" />
-                    <span>{item}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* GLOBAL OFFICES */}
-          <div>
-            <h3 className="text-lg font-semibold text-white">Global Offices</h3>
-
-            <div className="mt-6 grid gap-4">
-              {offices.map((office, i) => (
-                <div
-                  key={i}
-                  className="group rounded-2xl border border-white/10 bg-white/5 p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 hover:border-primary hover:bg-white/10"
-                >
-                  <div className="flex items-start gap-3">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary/15 text-primary">
-                      <MapPin className="h-4 w-4" />
-                    </div>
-
-                    <div className="text-sm">
-                      <p className="font-semibold text-white">
-                        {office.country} Office
-                      </p>
-
-                      <p className="text-white/60 text-xs mt-1">
-                        {office.address}
-                      </p>
-
-                      <div className="mt-2 space-y-1">
-                        {office.phones.map((phone) => (
-                          <a
-                            key={phone}
-                            href={`tel:${phone}`}
-                            className="block text-xs text-white/70 hover:text-primary transition-colors"
-                          >
-                            {phone}
-                          </a>
-                               
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
+      ))}
+    </div>
+  </div>
+</div>
 
         {/* bottom */}
         <div className="mt-14 border-t border-white/10 pt-6">
