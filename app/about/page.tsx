@@ -100,7 +100,7 @@ export default function AboutPage() {
 
       <Testimonials />
       <div className="relative mt-28 sm:mt-24 md:mt-20">
-              <BookingSearch />
+        <BookingSearch />
       </div>
     </main>
   )

@@ -452,7 +452,6 @@ function FieldInput({
       type={field.type}
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      placeholder={field.placeholder}
       className={base}
       style={style}
     />

@@ -56,7 +56,7 @@ export default function GalleryPage() {
                   sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0e2a3a]/70 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="absolute inset-0 bg-linear-to-t from-[#0e2a3a]/70 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 <figcaption className="absolute bottom-0 left-0 right-0 translate-y-4 p-4 text-sm font-medium text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
                   {p.alt}
                 </figcaption>
@@ -65,8 +65,8 @@ export default function GalleryPage() {
           </div>
         </div>
         <div className="relative  mt-28 sm:mt-24 md:mt-20">
-                <BookingSearch />
-              </div>
+          <BookingSearch />
+        </div>
       </section>
     </main>
   )
