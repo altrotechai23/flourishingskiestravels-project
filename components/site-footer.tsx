@@ -207,7 +207,7 @@ export function SiteFooter() {
       {departments.map((department) => (
         <div
           key={department.email}
-          className="rounded-2xl border border-white/10 bg-white/5 p-4 transition-all duration-300 hover:border-primary hover:bg-white/10"
+          className="rounded-2xl border border-white/10 bg-white/5 p-2 transition-all duration-300 hover:border-primary hover:bg-white/10"
         >
           <p className="text-sm font-semibold text-white">
             {department.title}
@@ -215,9 +215,9 @@ export function SiteFooter() {
 
           <a
             href={`mailto:${department.email}`}
-            className="mt-2 flex items-center gap-2 text-xs text-white/65 transition-colors hover:text-primary break-all"
+            className="mt-2 flex items-center gap-2 text-[8px] text-white/65 transition-colors hover:text-primary break-all"
           >
-            <Mail className="h-1.5 w-1.5 shrink-0" />
+            <Mail className="h-3.5 w-3.5 shrink-0" />
             <span>{department.email}</span>
           </a>
         </div>
