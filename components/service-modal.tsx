@@ -465,27 +465,112 @@ export function ServiceModal({ service, onClose }: ServiceModalProps) {
 
   const setField = (id: string, v: string) => setFormData((p) => ({ ...p, [id]: v }))
 
+  // const handleSubmit = async () => {
+  //   const missing = fields.filter((f) => f.required && !formData[f.id]?.trim())
+  //   if (missing.length > 0) {
+  //     setErrorMsg(`Please fill in: ${missing.map((f) => f.label).join(", ")}`)
+  //     return
+  //   }
+  //   setErrorMsg("")
+  //   setStatus("loading")
+  //   try {
+  //     const res = await fetch("/api/request", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({ service, ...formData }),
+  //     })
+  //     if (!res.ok) throw new Error()
+  //     setStatus("success")
+  //   } catch {
+  //     setStatus("error")
+  //     setErrorMsg("Something went wrong. Please try again or contact us directly.")
+  //   }
+  // }
   const handleSubmit = async () => {
-    const missing = fields.filter((f) => f.required && !formData[f.id]?.trim())
-    if (missing.length > 0) {
-      setErrorMsg(`Please fill in: ${missing.map((f) => f.label).join(", ")}`)
-      return
-    }
-    setErrorMsg("")
-    setStatus("loading")
-    try {
-      const res = await fetch("/api/request", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ service, ...formData }),
-      })
-      if (!res.ok) throw new Error()
-      setStatus("success")
-    } catch {
-      setStatus("error")
-      setErrorMsg("Something went wrong. Please try again or contact us directly.")
-    }
+  const missing = fields.filter((f) => f.required && !formData[f.id]?.trim())
+
+  if (missing.length > 0) {
+    setErrorMsg(`Please fill in: ${missing.map((f) => f.label).join(", ")}`)
+    return
   }
+
+  setErrorMsg("")
+  setStatus("loading")
+
+  try {
+    // 1. Submit the request to your API first.
+    // This sends the admin + customer emails.
+    const res = await fetch("/api/request", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        service,
+        ...formData,
+      }),
+    })
+
+    if (!res.ok) {
+      throw new Error("Failed to submit request")
+    }
+
+    // 2. Build a nice WhatsApp message
+    const clientFieldIds = new Set(["name", "email", "phone"])
+
+    const bookingDetails = fields
+      .filter(
+        (field) =>
+          !clientFieldIds.has(field.id) &&
+          formData[field.id]?.trim()
+      )
+      .map((field) => {
+        return `• ${field.label}: ${formData[field.id]}`
+      })
+      .join("\n")
+
+    const whatsappMessage = `✈️ *NEW BOOKING REQUEST*
+
+Hello Flourishing Skies Travels 👋
+
+I would like to make a *${service}* request.
+
+👤 *CLIENT DETAILS*
+• Name: ${formData.name}
+• Email: ${formData.email}
+• Phone: ${formData.phone}
+
+📋 *REQUEST DETAILS*
+${bookingDetails || "No additional details provided."}
+
+Thank you! 🙏`
+
+    // 3. Get the business WhatsApp number
+    const whatsappNumber =
+      process.env.NEXT_PUBLIC_WHATSAPP_NUMBER
+
+    if (!whatsappNumber) {
+      throw new Error("WhatsApp number is not configured")
+    }
+
+    // 4. Create WhatsApp URL
+    const whatsappUrl =
+      `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+        whatsappMessage
+      )}`
+
+    // 5. Open WhatsApp
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer")
+    setStatus("success")
+    
+
+  } catch (error) {
+    console.error(error)
+
+    setStatus("error")
+    setErrorMsg(
+      "Something went wrong. Please try again or contact us directly."
+    )
+  }
+}
 
   return (
     <div
@@ -524,19 +609,26 @@ export function ServiceModal({ service, onClose }: ServiceModalProps) {
                 <CheckCircle2 className="h-12 w-12" style={{ color }} />
               </div>
               <div>
-                <h3 className="text-2xl font-extrabold text-gray-900">Your Request Has Been Sent!</h3>
+                <h3 className="text-2xl font-extrabold text-gray-900">
+                  Request Submitted! 🎉
+                </h3>
+
                 <p className="mt-3 max-w-sm leading-relaxed text-gray-500">
-                  Thank you for your <strong className="text-gray-700">{service}</strong> enquiry.
-                  We&apos;ve received it and will get back to you soon. 🙌
+                  Your request has been received by our team.
+                  <br />
+                  <br />
+                  We&apos;ve also prepared your booking details in WhatsApp.
+                  Please tap <strong className="text-gray-700">Send</strong> in WhatsApp
+                  to send the request directly to our travel team. 💬
                 </p>
               </div>
               <button
-                onClick={onClose}
-                className="mt-2 rounded-xl px-10 py-3.5 text-sm font-bold text-white shadow-lg transition hover:opacity-90"
-                style={{ backgroundColor: color }}
-              >
-                Done
-              </button>
+  onClick={onClose}
+  className="mt-2 rounded-xl px-10 py-3.5 text-sm font-bold text-white shadow-lg transition hover:opacity-90"
+  style={{ backgroundColor: color }}
+>
+  Close
+</button>
             </div>
           ) : (
             <div className="grid gap-4 p-7 sm:grid-cols-2">

@@ -1,4 +1,3 @@
-
 // import { BookingSearch } from "@/components/booking-search"
 // import { Services } from "@/components/services"
 // import { SpecialTour } from "@/components/special-tour"

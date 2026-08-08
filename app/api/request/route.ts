@@ -132,7 +132,7 @@ export async function POST(req: Request) {
     </td></tr>
   </table>
 </body>
-</html>`
+    </html>`
 
     // ── Client confirmation email ─────────────────────────────────────────────
     const clientHtml = `
@@ -189,7 +189,7 @@ export async function POST(req: Request) {
     </td></tr>
   </table>
 </body>
-</html>`
+    </html>`
 
     // ── Send both emails in parallel ──────────────────────────────────────────
     await Promise.all([
@@ -206,9 +206,36 @@ export async function POST(req: Request) {
         subject: `✅ We've received your ${service} request`,
         html: clientHtml,
       }),
-    ])
+    ]);
 
-    return NextResponse.json({ success: true })
+    // Whatsapp Link
+    const whatsappMessage = `
+    ✈️ *NEW BOOKING REQUEST*
+
+    Hello Flourishing Skies Travels 👋
+    I would like to make a booking.
+
+    📋 *Booking Details*
+
+    ✈️ *Service:* ${service}
+    👤 *Name:* ${name}
+    📧 *Email:* ${email}
+    📱 *Phone:* ${phone}
+
+    ${Object.entries(rest)
+      .filter(([, value]) => value && String(value).trim())
+      .map(([key, value]) => `🔹 *${humanise(key)}:* ${value}`)
+      .join("\n")}
+
+    Thank you! 🙏
+    `.trim()
+
+    const whatsappUrl = `https://wa.me/97455078611?text=${encodeURIComponent(whatsappMessage)}`
+
+    return NextResponse.json({
+                  success: true,
+                  whatsappUrl,
+                })
   } catch (err) {
     console.error("Email send error:", err)
     return NextResponse.json({ error: "Failed to send email" }, { status: 500 })
