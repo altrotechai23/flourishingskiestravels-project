@@ -58,9 +58,9 @@ const ALL_COUNTRIES = getCountryDataList()
 // ─── Core client fields ───────────────────────────────────────────────────────
 
 const clientFields: FieldDef[] = [
-  { id: "name",  label: "Full Name",     type: "text",  placeholder: "",          required: true, icon: <User  className="h-4 w-4" /> },
-  { id: "email", label: "Email Address", type: "email", placeholder: "",  required: true, icon: <Mail  className="h-4 w-4" /> },
-  { id: "phone", label: "Phone Number",  type: "tel",   placeholder: "",   required: true, icon: <Phone className="h-4 w-4" /> },
+  { id: "name",  label: "Full Name",     type: "text",  placeholder: "", required: true, icon: <User  className="h-4 w-4" /> },
+  { id: "email", label: "Email Address", type: "email", placeholder: "", required: true, icon: <Mail  className="h-4 w-4" /> },
+  { id: "phone", label: "Phone Number",  type: "tel",   placeholder: "", required: true, icon: <Phone className="h-4 w-4" /> },
 ]
 
 // ─── Field definitions per service ───────────────────────────────────────────
@@ -68,144 +68,144 @@ const clientFields: FieldDef[] = [
 export const serviceFields: Record<ServiceId, FieldDef[]> = {
   "Travel Consultancy": [
     ...clientFields,
-    { id: "destination", label: "Destination",           type: "country",                                                                                                    required: true,  icon: <MapPin   className="h-4 w-4" /> },
-    { id: "travelDate",  label: "Preferred Travel Date", type: "date",                                                                                                       required: true,  icon: <Calendar className="h-4 w-4" /> },
-    { id: "people",      label: "Number of People",      type: "number",  placeholder: "2",                                                                                  required: true },
-    { id: "notes",       label: "How can we help you?",  type: "textarea", placeholder: "Tell us about your travel plans…" },
+    { id: "destination", label: "Destination",           type: "country", required: true, icon: <MapPin   className="h-4 w-4" /> },
+    { id: "travelDate",  label: "Preferred Travel Date", type: "date",    required: true, icon: <Calendar className="h-4 w-4" /> },
+    { id: "people",      label: "Number of People",      type: "number",  placeholder: "", required: true },
+    { id: "notes",       label: "How can we help you?", type: "textarea", placeholder: "" },
   ],
   "Visa Assistance": [
     ...clientFields,
-    { id: "destination", label: "Destination Country",  type: "country",                                                                                                     required: true,  icon: <MapPin   className="h-4 w-4" /> },
-    { id: "visaType",    label: "Visa Type",            type: "select",  options: ["Tourist", "Business", "Student", "Work", "Transit", "Medical"],                          required: true },
-    { id: "travelDate",  label: "Planned Travel Date",  type: "date",                                                                                                        required: true,  icon: <Calendar className="h-4 w-4" /> },
-    { id: "people",      label: "Number of Applicants", type: "number",  placeholder: "1",                                                                                   required: true },
-    { id: "notes",       label: "Additional Notes",     type: "textarea", placeholder: "Any special requirements?" },
+    { id: "destination", label: "Destination Country",  type: "country", required: true, icon: <MapPin   className="h-4 w-4" /> },
+    { id: "visaType",    label: "Visa Type",            type: "select",  options: ["Tourist", "Business", "Student", "Work", "Transit", "Medical"], required: true },
+    { id: "travelDate",  label: "Planned Travel Date",  type: "date",    required: true, icon: <Calendar className="h-4 w-4" /> },
+    { id: "people",      label: "Number of Applicants", type: "number",  placeholder: "", required: true },
+    { id: "notes",       label: "Additional Notes",     type: "textarea", placeholder: "" },
   ],
   "Tour Bookings": [
     ...clientFields,
-    { id: "destination", label: "Tour Destination",     type: "country",                                                                                                     required: true,  icon: <MapPin   className="h-4 w-4" /> },
-    { id: "checkIn",     label: "Start Date",           type: "date",                                                                                                        required: true,  icon: <Calendar className="h-4 w-4" /> },
-    { id: "checkOut",    label: "End Date",             type: "date",                                                                                                        required: true,  icon: <Calendar className="h-4 w-4" /> },
-    { id: "people",      label: "Number of Travellers", type: "number",  placeholder: "2",                                                                                   required: true },
-    { id: "tourType",    label: "Tour Type",            type: "select",  options: ["Cultural", "Adventure", "Safari", "City Tour", "Beach", "Historical", "Custom"],         required: true },
-    { id: "notes",       label: "Special Requests",     type: "textarea", placeholder: "Dietary needs, accessibility, etc." },
+    { id: "destination", label: "Tour Destination",     type: "country", required: true, icon: <MapPin   className="h-4 w-4" /> },
+    { id: "checkIn",     label: "Start Date",           type: "date",    required: true, icon: <Calendar className="h-4 w-4" /> },
+    { id: "checkOut",    label: "End Date",             type: "date",    required: true, icon: <Calendar className="h-4 w-4" /> },
+    { id: "people",      label: "Number of Travellers", type: "number",  placeholder: "", required: true },
+    { id: "tourType",    label: "Tour Type",            type: "select",  options: ["Cultural", "Adventure", "Safari", "City Tour", "Beach", "Historical", "Custom"], required: true },
+    { id: "notes",       label: "Special Requests",     type: "textarea", placeholder: "" },
   ],
   "Hotel Bookings": [
     ...clientFields,
-    { id: "destination", label: "Destination",      type: "country",                                                                                                         required: true,  icon: <MapPin   className="h-4 w-4" /> },
-    { id: "checkIn",     label: "Check-in Date",    type: "date",                                                                                                            required: true,  icon: <Calendar className="h-4 w-4" /> },
-    { id: "checkOut",    label: "Check-out Date",   type: "date",                                                                                                            required: true,  icon: <Calendar className="h-4 w-4" /> },
-    { id: "adults",      label: "Adults",           type: "number",  placeholder: "2",                                                                                       required: true },
-    { id: "children",    label: "Children",         type: "number",  placeholder: "0" },
-    { id: "rooms",       label: "Rooms Needed",     type: "number",  placeholder: "1",                                                                                       required: true },
+    { id: "destination", label: "Destination",      type: "country", required: true, icon: <MapPin   className="h-4 w-4" /> },
+    { id: "checkIn",     label: "Check-in Date",    type: "date",    required: true, icon: <Calendar className="h-4 w-4" /> },
+    { id: "checkOut",    label: "Check-out Date",   type: "date",    required: true, icon: <Calendar className="h-4 w-4" /> },
+    { id: "adults",      label: "Adults",           type: "number",  placeholder: "", required: true },
+    { id: "children",    label: "Children",         type: "number",  placeholder: "" },
+    { id: "rooms",       label: "Rooms Needed",     type: "number",  placeholder: "", required: true },
     { id: "hotelClass",  label: "Hotel Class",      type: "select",  options: ["3 Star", "4 Star", "5 Star", "Budget", "Boutique", "Any"] },
-    { id: "notes",       label: "Special Requests", type: "textarea", placeholder: "Late check-in, sea view, etc." },
+    { id: "notes",       label: "Special Requests", type: "textarea", placeholder: "" },
   ],
   "Travel Insurance": [
     ...clientFields,
-    { id: "destination", label: "Destination",          type: "country",                                                                                                     required: true,  icon: <MapPin   className="h-4 w-4" /> },
-    { id: "travelDate",  label: "Travel Date",          type: "date",                                                                                                        required: true,  icon: <Calendar className="h-4 w-4" /> },
-    { id: "returnDate",  label: "Return Date",          type: "date",                                                                                                        required: true,  icon: <Calendar className="h-4 w-4" /> },
-    { id: "people",      label: "Number of Travellers", type: "number",  placeholder: "1",                                                                                   required: true },
-    { id: "coverType",   label: "Cover Type",           type: "select",  options: ["Single Trip", "Multi-Trip Annual", "Family", "Business", "Medical Only"],                required: true },
-    { id: "notes",       label: "Pre-existing Conditions / Notes", type: "textarea", placeholder: "Any medical conditions we should know?" },
+    { id: "destination", label: "Destination",          type: "country", required: true, icon: <MapPin   className="h-4 w-4" /> },
+    { id: "travelDate",  label: "Travel Date",          type: "date",    required: true, icon: <Calendar className="h-4 w-4" /> },
+    { id: "returnDate",  label: "Return Date",          type: "date",    required: true, icon: <Calendar className="h-4 w-4" /> },
+    { id: "people",      label: "Number of Travellers", type: "number",  placeholder: "", required: true },
+    { id: "coverType",   label: "Cover Type",           type: "select",  options: ["Single Trip", "Multi-Trip Annual", "Family", "Business", "Medical Only"], required: true },
+    { id: "notes",       label: "Pre-existing Conditions / Notes", type: "textarea", placeholder: "" },
   ],
   "Flight Bookings": [
     ...clientFields,
-    { id: "origin",      label: "Departure City / Airport",      type: "text",    placeholder: "Cape Town (CPT)",                                                            required: true,  icon: <MapPin   className="h-4 w-4" /> },
-    { id: "destination", label: "Destination Country",           type: "country",                                                                                            required: true,  icon: <MapPin   className="h-4 w-4" /> },
-    { id: "departDate",  label: "Departure Date",                type: "date",                                                                                               required: true,  icon: <Calendar className="h-4 w-4" /> },
-    { id: "returnDate",  label: "Return Date (blank = one-way)", type: "date",                                                                                                                icon: <Calendar className="h-4 w-4" /> },
-    { id: "adults",      label: "Adults",                        type: "number",  placeholder: "1",                                                                          required: true },
-    { id: "children",    label: "Children",                      type: "number",  placeholder: "0" },
-    { id: "cabinClass",  label: "Cabin Class",                   type: "select",  options: ["Economy", "Premium Economy", "Business", "First Class"],                        required: true },
-    { id: "notes",       label: "Special Requests",              type: "textarea", placeholder: "Meal preferences, seat preferences…" },
+    { id: "origin",      label: "Departure City / Airport",      type: "text",    placeholder: "", required: true, icon: <MapPin   className="h-4 w-4" /> },
+    { id: "destination", label: "Destination Country",           type: "country", required: true, icon: <MapPin   className="h-4 w-4" /> },
+    { id: "departDate",  label: "Departure Date",                type: "date",    required: true, icon: <Calendar className="h-4 w-4" /> },
+    { id: "returnDate",  label: "Return Date (blank = one-way)", type: "date",    icon: <Calendar className="h-4 w-4" /> },
+    { id: "adults",      label: "Adults",                        type: "number",  placeholder: "", required: true },
+    { id: "children",    label: "Children",                      type: "number",  placeholder: "" },
+    { id: "cabinClass",  label: "Cabin Class",                   type: "select",  options: ["Economy", "Premium Economy", "Business", "First Class"], required: true },
+    { id: "notes",       label: "Special Requests",              type: "textarea", placeholder: "" },
   ],
   "Flight Hire / Charter": [
     ...clientFields,
-    { id: "origin",       label: "Departure Location",      type: "text",    placeholder: "Cape Town, South Africa",                                                         required: true,  icon: <MapPin   className="h-4 w-4" /> },
-    { id: "destination",  label: "Destination Country",     type: "country",                                                                                                 required: true,  icon: <MapPin   className="h-4 w-4" /> },
-    { id: "departDate",   label: "Departure Date",          type: "date",                                                                                                    required: true,  icon: <Calendar className="h-4 w-4" /> },
-    { id: "returnDate",   label: "Return Date",             type: "date",                                                                                                                     icon: <Calendar className="h-4 w-4" /> },
-    { id: "people",       label: "Number of Passengers",    type: "number",  placeholder: "4",                                                                               required: true },
+    { id: "origin",       label: "Departure Location",      type: "text",    placeholder: "", required: true, icon: <MapPin   className="h-4 w-4" /> },
+    { id: "destination",  label: "Destination Country",     type: "country", required: true, icon: <MapPin   className="h-4 w-4" /> },
+    { id: "departDate",   label: "Departure Date",          type: "date",    required: true, icon: <Calendar className="h-4 w-4" /> },
+    { id: "returnDate",   label: "Return Date",             type: "date",    icon: <Calendar className="h-4 w-4" /> },
+    { id: "people",       label: "Number of Passengers",    type: "number",  placeholder: "", required: true },
     { id: "aircraftType", label: "Aircraft Preference",     type: "select",  options: ["Light Jet", "Midsize Jet", "Heavy Jet", "Turboprop", "Helicopter", "No Preference"] },
-    { id: "notes",        label: "Additional Requirements", type: "textarea", placeholder: "Catering, cargo, special requests…" },
+    { id: "notes",        label: "Additional Requirements", type: "textarea", placeholder: "" },
   ],
   "Airport Transfers": [
     ...clientFields,
-    { id: "airport",      label: "Airport",              type: "text",    placeholder: "Cape Town International Airport",                                                    required: true,  icon: <MapPin   className="h-4 w-4" /> },
-    { id: "transferType", label: "Transfer Type",        type: "select",  options: ["Airport → Hotel", "Hotel → Airport", "Airport → Airport", "Port Transfer"],            required: true },
-    { id: "destination",  label: "Country",              type: "country",                                                                                                    required: true,  icon: <MapPin   className="h-4 w-4" /> },
-    { id: "travelDate",   label: "Transfer Date",        type: "date",                                                                                                       required: true,  icon: <Calendar className="h-4 w-4" /> },
-    { id: "flightNumber", label: "Flight Number",        type: "text",    placeholder: "SA 401 (optional)" },
-    { id: "people",       label: "Number of Passengers", type: "number",  placeholder: "2",                                                                                  required: true },
+    { id: "airport",      label: "Airport",              type: "text",    placeholder: "", required: true, icon: <MapPin   className="h-4 w-4" /> },
+    { id: "transferType", label: "Transfer Type",        type: "select",  options: ["Airport → Hotel", "Hotel → Airport", "Airport → Airport", "Port Transfer"], required: true },
+    { id: "destination",  label: "Country",              type: "country", required: true, icon: <MapPin   className="h-4 w-4" /> },
+    { id: "travelDate",   label: "Transfer Date",        type: "date",    required: true, icon: <Calendar className="h-4 w-4" /> },
+    { id: "flightNumber", label: "Flight Number",        type: "text",    placeholder: "" },
+    { id: "people",       label: "Number of Passengers", type: "number",  placeholder: "", required: true },
     { id: "vehicleType",  label: "Vehicle Type",         type: "select",  options: ["Sedan", "SUV / 4x4", "Minibus (up to 12)", "Coach", "Luxury"] },
-    { id: "notes",        label: "Notes",                type: "textarea", placeholder: "Luggage details, accessibility needs…" },
+    { id: "notes",        label: "Notes",                type: "textarea", placeholder: "" },
   ],
   "Airport Assistance": [
     ...clientFields,
-    { id: "airport",        label: "Airport",           type: "text",    placeholder: "Cape Town International Airport",                                                     required: true,  icon: <MapPin   className="h-4 w-4" /> },
-    { id: "destination",    label: "Country",           type: "country",                                                                                                     required: true,  icon: <MapPin   className="h-4 w-4" /> },
-    { id: "travelDate",     label: "Date of Travel",    type: "date",                                                                                                        required: true,  icon: <Calendar className="h-4 w-4" /> },
+    { id: "airport",        label: "Airport",           type: "text",    placeholder: "", required: true, icon: <MapPin   className="h-4 w-4" /> },
+    { id: "destination",    label: "Country",           type: "country", required: true, icon: <MapPin   className="h-4 w-4" /> },
+    { id: "travelDate",     label: "Date of Travel",    type: "date",    required: true, icon: <Calendar className="h-4 w-4" /> },
     { id: "assistanceType", label: "Assistance Type",   type: "select",  options: ["Meet & Greet", "Wheelchair / Mobility", "VIP Lounge", "Fast Track", "Unaccompanied Minor", "Elderly Assistance"], required: true },
-    { id: "people",         label: "Number of People",  type: "number",  placeholder: "1",                                                                                   required: true },
-    { id: "notes",          label: "Details",           type: "textarea", placeholder: "Flight details and any special needs…" },
+    { id: "people",         label: "Number of People",  type: "number",  placeholder: "", required: true },
+    { id: "notes",          label: "Details",           type: "textarea", placeholder: "" },
   ],
   "Vacation Packages": [
     ...clientFields,
-    { id: "destination", label: "Destination",         type: "country",                                                                                                      required: true,  icon: <MapPin   className="h-4 w-4" /> },
-    { id: "checkIn",     label: "Travel From",         type: "date",                                                                                                         required: true,  icon: <Calendar className="h-4 w-4" /> },
-    { id: "checkOut",    label: "Travel To",           type: "date",                                                                                                         required: true,  icon: <Calendar className="h-4 w-4" /> },
-    { id: "adults",      label: "Adults",              type: "number",  placeholder: "2",                                                                                    required: true },
-    { id: "children",    label: "Children",            type: "number",  placeholder: "0" },
+    { id: "destination", label: "Destination",         type: "country", required: true, icon: <MapPin   className="h-4 w-4" /> },
+    { id: "checkIn",     label: "Travel From",         type: "date",    required: true, icon: <Calendar className="h-4 w-4" /> },
+    { id: "checkOut",    label: "Travel To",           type: "date",    required: true, icon: <Calendar className="h-4 w-4" /> },
+    { id: "adults",      label: "Adults",              type: "number",  placeholder: "", required: true },
+    { id: "children",    label: "Children",            type: "number",  placeholder: "" },
     { id: "budget",      label: "Budget (per person)", type: "select",  options: ["Under R5,000", "R5,000–R10,000", "R10,000–R20,000", "R20,000–R40,000", "R40,000+", "Flexible"] },
     { id: "interests",   label: "Interests",           type: "select",  options: ["Beach & Relaxation", "Adventure & Sports", "Cultural & Historical", "Safari & Wildlife", "City Break", "Honeymoon", "Family Fun", "Mixed"] },
-    { id: "notes",       label: "Dream Trip Details",  type: "textarea", placeholder: "Tell us about your dream vacation…" },
+    { id: "notes",       label: "Dream Trip Details",  type: "textarea", placeholder: "" },
   ],
   "Yellow Fever / Passport": [
     ...clientFields,
     { id: "serviceType", label: "Service Required",       type: "select",  options: ["Yellow Fever Certificate", "Passport Application", "Passport Renewal", "Emergency Travel Document", "Both (Yellow Fever + Passport)"], required: true },
-    { id: "destination", label: "Destination Country",    type: "country",                                                                                                   required: true,  icon: <MapPin   className="h-4 w-4" /> },
-    { id: "travelDate",  label: "Planned Travel Date",    type: "date",                                                                                                      required: true,  icon: <Calendar className="h-4 w-4" /> },
-    { id: "people",      label: "Number of People",       type: "number",  placeholder: "1",                                                                                 required: true },
-    { id: "notes",       label: "Additional Information", type: "textarea", placeholder: "Urgency, special circumstances…" },
+    { id: "destination", label: "Destination Country",    type: "country", required: true, icon: <MapPin   className="h-4 w-4" /> },
+    { id: "travelDate",  label: "Planned Travel Date",    type: "date",    required: true, icon: <Calendar className="h-4 w-4" /> },
+    { id: "people",      label: "Number of People",       type: "number",  placeholder: "", required: true },
+    { id: "notes",       label: "Additional Information", type: "textarea", placeholder: "" },
   ],
   "Freight Forwarding": [
     ...clientFields,
-    { id: "origin",      label: "Origin Location",       type: "text",    placeholder: "Cape Town, South Africa",                                                            required: true,  icon: <MapPin   className="h-4 w-4" /> },
-    { id: "destination", label: "Destination Country",   type: "country",                                                                                                    required: true,  icon: <MapPin   className="h-4 w-4" /> },
-    { id: "freightType", label: "Freight Type",          type: "select",  options: ["Air Freight", "Sea Freight", "Road Freight", "Express Courier"],                        required: true },
-    { id: "cargoType",   label: "Cargo Description",     type: "text",    placeholder: "Electronics, clothing, machinery…",                                                  required: true },
-    { id: "weight",      label: "Estimated Weight (kg)", type: "number",  placeholder: "100" },
-    { id: "travelDate",  label: "Desired Dispatch Date", type: "date",                                                                                                                        icon: <Calendar className="h-4 w-4" /> },
-    { id: "notes",       label: "Additional Details",    type: "textarea", placeholder: "Dimensions, fragile items, customs requirements…" },
+    { id: "origin",      label: "Origin Location",       type: "text",    placeholder: "", required: true, icon: <MapPin   className="h-4 w-4" /> },
+    { id: "destination", label: "Destination Country",   type: "country", required: true, icon: <MapPin   className="h-4 w-4" /> },
+    { id: "freightType", label: "Freight Type",          type: "select",  options: ["Air Freight", "Sea Freight", "Road Freight", "Express Courier"], required: true },
+    { id: "cargoType",   label: "Cargo Description",     type: "text",    placeholder: "", required: true },
+    { id: "weight",      label: "Estimated Weight (kg)", type: "number",  placeholder: "" },
+    { id: "travelDate",  label: "Desired Dispatch Date", type: "date",    icon: <Calendar className="h-4 w-4" /> },
+    { id: "notes",       label: "Additional Details",    type: "textarea", placeholder: "" },
   ],
   "Logistics / Transportation": [
     ...clientFields,
-    { id: "origin",      label: "Origin Location",       type: "text",    placeholder: "Cape Town, South Africa",                                                            required: true,  icon: <MapPin   className="h-4 w-4" /> },
-    { id: "destination", label: "Destination Country",   type: "country",                                                                                                    required: true,  icon: <MapPin   className="h-4 w-4" /> },
+    { id: "origin",      label: "Origin Location",       type: "text",    placeholder: "", required: true, icon: <MapPin   className="h-4 w-4" /> },
+    { id: "destination", label: "Destination Country",   type: "country", required: true, icon: <MapPin   className="h-4 w-4" /> },
     { id: "serviceType", label: "Service Type",          type: "select",  options: ["Last Mile Delivery", "Warehousing", "Cross-Docking", "Supply Chain", "Cold Chain", "Bulk Transport"], required: true },
-    { id: "travelDate",  label: "Required Date",         type: "date",                                                                                                                        icon: <Calendar className="h-4 w-4" /> },
-    { id: "quantity",    label: "Estimated Qty / Units", type: "number",  placeholder: "1" },
-    { id: "notes",       label: "Details",               type: "textarea", placeholder: "Describe your logistics needs…" },
+    { id: "travelDate",  label: "Required Date",         type: "date",    icon: <Calendar className="h-4 w-4" /> },
+    { id: "quantity",    label: "Estimated Qty / Units", type: "number",  placeholder: "" },
+    { id: "notes",       label: "Details",               type: "textarea", placeholder: "" },
   ],
   "Package Pickup & Delivery": [
     ...clientFields,
-    { id: "pickupAddress",   label: "Pickup Address",     type: "text",    placeholder: "123 Main St, Cape Town",   required: true, icon: <MapPin   className="h-4 w-4" /> },
-    { id: "deliveryAddress", label: "Delivery Address",   type: "text",    placeholder: "Recipient full address",    required: true, icon: <MapPin   className="h-4 w-4" /> },
-    { id: "destination",     label: "Destination Country",type: "country",                                           required: true, icon: <MapPin   className="h-4 w-4" /> },
-    { id: "travelDate",      label: "Pickup Date",        type: "date",                                              required: true, icon: <Calendar className="h-4 w-4" /> },
-    { id: "packageSize",     label: "Package Size",       type: "select",  options: ["Small (under 5 kg)", "Medium (5–20 kg)", "Large (20–50 kg)", "Extra Large (50 kg+)"], required: true },
-    { id: "notes",           label: "Package Description",type: "textarea", placeholder: "Contents, fragility, value…" },
+    { id: "pickupAddress",   label: "Pickup Address",      type: "text",    placeholder: "", required: true, icon: <MapPin   className="h-4 w-4" /> },
+    { id: "deliveryAddress", label: "Delivery Address",    type: "text",    placeholder: "", required: true, icon: <MapPin   className="h-4 w-4" /> },
+    { id: "destination",     label: "Destination Country", type: "country", required: true, icon: <MapPin   className="h-4 w-4" /> },
+    { id: "travelDate",      label: "Pickup Date",         type: "date",    required: true, icon: <Calendar className="h-4 w-4" /> },
+    { id: "packageSize",     label: "Package Size",        type: "select",  options: ["Small (under 5 kg)", "Medium (5–20 kg)", "Large (20–50 kg)", "Extra Large (50 kg+)"], required: true },
+    { id: "notes",           label: "Package Description", type: "textarea", placeholder: "" },
   ],
   "Riders Services": [
     ...clientFields,
-    { id: "people",     label: "Number of People",  type: "number",  placeholder: "1",                                                                                       required: true },
-    { id: "origin",     label: "Pickup Location",   type: "text",    placeholder: "Your address or area",                                                                    required: true, icon: <MapPin   className="h-4 w-4" /> },
-    { id: "dropoff",    label: "Drop-off Location", type: "text",    placeholder: "Destination address",                                                                     required: true, icon: <MapPin   className="h-4 w-4" /> },
-    { id: "travelDate", label: "Date Needed",       type: "date",                                                                                                            required: true, icon: <Calendar className="h-4 w-4" /> },
-    { id: "riderType",  label: "Rider Type",        type: "select",  options: ["Standard", "Premium / Executive", "Bike Courier", "Minibus / Group"],                       required: true },
-    { id: "notes",      label: "Notes",             type: "textarea", placeholder: "Any special instructions…" },
+    { id: "people",     label: "Number of People",  type: "number",  placeholder: "", required: true },
+    { id: "origin",     label: "Pickup Location",   type: "text",    placeholder: "", required: true, icon: <MapPin   className="h-4 w-4" /> },
+    { id: "dropoff",    label: "Drop-off Location", type: "text",    placeholder: "", required: true, icon: <MapPin   className="h-4 w-4" /> },
+    { id: "travelDate", label: "Date Needed",       type: "date",    required: true, icon: <Calendar className="h-4 w-4" /> },
+    { id: "riderType",  label: "Rider Type",        type: "select",  options: ["Standard", "Premium / Executive", "Bike Courier", "Minibus / Group"], required: true },
+    { id: "notes",      label: "Notes",             type: "textarea", placeholder: "" },
   ],
 }
 
@@ -214,19 +214,19 @@ export const serviceFields: Record<ServiceId, FieldDef[]> = {
 export const serviceColor: Record<ServiceId, string> = {
   "Travel Consultancy":        "#6366f1",
   "Visa Assistance":           "#0ea5e9",
-  "Tour Bookings":             "#10b981",
-  "Hotel Bookings":            "#f59e0b",
-  "Travel Insurance":          "#8b5cf6",
-  "Flight Bookings":           "#3b82f6",
-  "Flight Hire / Charter":     "#ec4899",
-  "Airport Transfers":         "#14b8a6",
-  "Airport Assistance":        "#f97316",
-  "Vacation Packages":         "#ef4444",
-  "Yellow Fever / Passport":   "#eab308",
-  "Freight Forwarding":        "#64748b",
-  "Logistics / Transportation":"#475569",
-  "Package Pickup & Delivery": "#7c3aed",
-  "Riders Services":           "#0d9488",
+  "Tour Bookings":              "#10b981",
+  "Hotel Bookings":             "#f59e0b",
+  "Travel Insurance":           "#8b5cf6",
+  "Flight Bookings":            "#3b82f6",
+  "Flight Hire / Charter":      "#ec4899",
+  "Airport Transfers":          "#14b8a6",
+  "Airport Assistance":         "#f97316",
+  "Vacation Packages":          "#ef4444",
+  "Yellow Fever / Passport":    "#eab308",
+  "Freight Forwarding":         "#64748b",
+  "Logistics / Transportation": "#475569",
+  "Package Pickup & Delivery":  "#7c3aed",
+  "Riders Services":            "#0d9488",
 }
 
 // ─── Searchable Country Picker ────────────────────────────────────────────────
@@ -289,7 +289,7 @@ function CountryPicker({
         ) : (
           <>
             <MapPin className="h-4 w-4 text-gray-400" />
-            <span className="text-gray-400">Search country…</span>
+            <span className="text-gray-400"></span>
           </>
         )}
         <ChevronDown
@@ -308,7 +308,7 @@ function CountryPicker({
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Type to search countries…"
+              placeholder=""
               className="flex-1 bg-transparent text-sm text-gray-800 outline-none placeholder:text-gray-400"
             />
             {query && (
@@ -486,48 +486,49 @@ export function ServiceModal({ service, onClose }: ServiceModalProps) {
   //     setErrorMsg("Something went wrong. Please try again or contact us directly.")
   //   }
   // }
+
   const handleSubmit = async () => {
-  const missing = fields.filter((f) => f.required && !formData[f.id]?.trim())
+    const missing = fields.filter((f) => f.required && !formData[f.id]?.trim())
 
-  if (missing.length > 0) {
-    setErrorMsg(`Please fill in: ${missing.map((f) => f.label).join(", ")}`)
-    return
-  }
-
-  setErrorMsg("")
-  setStatus("loading")
-
-  try {
-    // 1. Submit the request to your API first.
-    // This sends the admin + customer emails.
-    const res = await fetch("/api/request", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        service,
-        ...formData,
-      }),
-    })
-
-    if (!res.ok) {
-      throw new Error("Failed to submit request")
+    if (missing.length > 0) {
+      setErrorMsg(`Please fill in: ${missing.map((f) => f.label).join(", ")}`)
+      return
     }
 
-    // 2. Build a nice WhatsApp message
-    const clientFieldIds = new Set(["name", "email", "phone"])
+    setErrorMsg("")
+    setStatus("loading")
 
-    const bookingDetails = fields
-      .filter(
-        (field) =>
-          !clientFieldIds.has(field.id) &&
-          formData[field.id]?.trim()
-      )
-      .map((field) => {
-        return `• ${field.label}: ${formData[field.id]}`
+    try {
+      // 1. Submit the request to your API first.
+      // This sends the admin + customer emails.
+      const res = await fetch("/api/request", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          service,
+          ...formData,
+        }),
       })
-      .join("\n")
 
-    const whatsappMessage = `✈️ *NEW BOOKING REQUEST*
+      if (!res.ok) {
+        throw new Error("Failed to submit request")
+      }
+
+      // 2. Build a nice WhatsApp message
+      const clientFieldIds = new Set(["name", "email", "phone"])
+
+      const bookingDetails = fields
+        .filter(
+          (field) =>
+            !clientFieldIds.has(field.id) &&
+            formData[field.id]?.trim()
+        )
+        .map((field) => {
+          return `• ${field.label}: ${formData[field.id]}`
+        })
+        .join("\n")
+
+      const whatsappMessage = `✈️ *NEW BOOKING REQUEST*
 
 Hello Flourishing Skies Travels 👋
 
@@ -543,34 +544,33 @@ ${bookingDetails || "No additional details provided."}
 
 Thank you! 🙏`
 
-    // 3. Get the business WhatsApp number
-    const whatsappNumber =
-      process.env.NEXT_PUBLIC_WHATSAPP_NUMBER
+      // 3. Get the business WhatsApp number
+      const whatsappNumber =
+        process.env.NEXT_PUBLIC_WHATSAPP_NUMBER
 
-    if (!whatsappNumber) {
-      throw new Error("WhatsApp number is not configured")
+      if (!whatsappNumber) {
+        throw new Error("WhatsApp number is not configured")
+      }
+
+      // 4. Create WhatsApp URL
+      const whatsappUrl =
+        `https://wa.me/2348106426962?text=${encodeURIComponent(
+          whatsappMessage
+        )}`
+
+      // 5. Open WhatsApp
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer")
+      setStatus("success")
+
+    } catch (error) {
+      console.error(error)
+
+      setStatus("error")
+      setErrorMsg(
+        "Something went wrong. Please try again or contact us directly."
+      )
     }
-
-    // 4. Create WhatsApp URL
-    const whatsappUrl =
-      `https://wa.me/2348106426962?text=${encodeURIComponent(
-        whatsappMessage
-      )}`
-
-    // 5. Open WhatsApp
-    window.open(whatsappUrl, "_blank", "noopener,noreferrer")
-    setStatus("success")
-    
-
-  } catch (error) {
-    console.error(error)
-
-    setStatus("error")
-    setErrorMsg(
-      "Something went wrong. Please try again or contact us directly."
-    )
   }
-}
 
   return (
     <div
@@ -623,12 +623,12 @@ Thank you! 🙏`
                 </p>
               </div>
               <button
-  onClick={onClose}
-  className="mt-2 rounded-xl px-10 py-3.5 text-sm font-bold text-white shadow-lg transition hover:opacity-90"
-  style={{ backgroundColor: color }}
->
-  Close
-</button>
+                onClick={onClose}
+                className="mt-2 rounded-xl px-10 py-3.5 text-sm font-bold text-white shadow-lg transition hover:opacity-90"
+                style={{ backgroundColor: color }}
+              >
+                Close
+              </button>
             </div>
           ) : (
             <div className="grid gap-4 p-7 sm:grid-cols-2">

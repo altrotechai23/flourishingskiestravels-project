@@ -124,7 +124,7 @@ const clientFields: FieldDef[] = [
     id: "phone",
     label: "Phone Number",
     type: "tel",
-    placeholder: "+27 XX XXX XXXX",
+    placeholder: "",
     required: true,
   },
 ]
@@ -139,7 +139,7 @@ const serviceMap: Record<ServiceId, ServiceMeta> = {
         id: "origin",
         label: "Departure City / Airport",
         type: "text",
-        placeholder: "Cape Town (CPT)",
+        placeholder: "",
         required: true,
       },
       {
@@ -163,14 +163,14 @@ const serviceMap: Record<ServiceId, ServiceMeta> = {
         id: "adults",
         label: "Adults",
         type: "number",
-        placeholder: "1",
+        placeholder: "",
         required: true,
       },
       {
         id: "children",
         label: "Children",
         type: "number",
-        placeholder: "0",
+        placeholder: "",
       },
       {
         id: "cabinClass",
@@ -189,7 +189,7 @@ const serviceMap: Record<ServiceId, ServiceMeta> = {
         label: "Special Requests",
         type: "textarea",
         placeholder:
-          "Meal preferences, seat preferences, etc.",
+          "",
       },
     ],
   },
@@ -215,7 +215,7 @@ const serviceMap: Record<ServiceId, ServiceMeta> = {
         id: "people",
         label: "Number of People",
         type: "number",
-        placeholder: "2",
+        placeholder: "",
         required: true,
       },
       {
@@ -223,7 +223,7 @@ const serviceMap: Record<ServiceId, ServiceMeta> = {
         label: "What do you need help with?",
         type: "textarea",
         placeholder:
-          "Tell us about your travel plans...",
+          "",
       },
     ],
   },
@@ -263,14 +263,14 @@ const serviceMap: Record<ServiceId, ServiceMeta> = {
         id: "people",
         label: "Number of Applicants",
         type: "number",
-        placeholder: "1",
+        placeholder: "",
         required: true,
       },
       {
         id: "notes",
         label: "Additional Notes",
         type: "textarea",
-        placeholder: "Any special requirements?",
+        placeholder: "",
       },
     ],
   },
@@ -325,7 +325,7 @@ const serviceMap: Record<ServiceId, ServiceMeta> = {
         label: "Special Requests",
         type: "textarea",
         placeholder:
-          "Dietary needs, accessibility, etc.",
+          "",
       },
     ],
   },
@@ -357,20 +357,20 @@ const serviceMap: Record<ServiceId, ServiceMeta> = {
         id: "adults",
         label: "Adults",
         type: "number",
-        placeholder: "2",
+        placeholder: "",
         required: true,
       },
       {
         id: "children",
         label: "Children",
         type: "number",
-        placeholder: "0",
+        placeholder: "",
       },
       {
         id: "rooms",
         label: "Rooms Needed",
         type: "number",
-        placeholder: "1",
+        placeholder: "",
         required: true,
       },
       {
@@ -391,7 +391,7 @@ const serviceMap: Record<ServiceId, ServiceMeta> = {
         label: "Special Requests",
         type: "textarea",
         placeholder:
-          "Late check-in, sea view, etc.",
+          "",
       },
     ],
   },
@@ -423,7 +423,7 @@ const serviceMap: Record<ServiceId, ServiceMeta> = {
         id: "people",
         label: "Number of Travellers",
         type: "number",
-        placeholder: "1",
+        placeholder: "",
         required: true,
       },
       {
@@ -444,7 +444,7 @@ const serviceMap: Record<ServiceId, ServiceMeta> = {
         label: "Pre-existing Conditions / Notes",
         type: "textarea",
         placeholder:
-          "Any medical conditions we should know about?",
+          "",
       },
     ],
   },
@@ -458,7 +458,7 @@ const serviceMap: Record<ServiceId, ServiceMeta> = {
         id: "origin",
         label: "Departure Location",
         type: "text",
-        placeholder: "Cape Town, South Africa",
+        placeholder: "",
         required: true,
       },
       {
@@ -482,7 +482,7 @@ const serviceMap: Record<ServiceId, ServiceMeta> = {
         id: "people",
         label: "Number of Passengers",
         type: "number",
-        placeholder: "4",
+        placeholder: "",
         required: true,
       },
       {
@@ -503,7 +503,7 @@ const serviceMap: Record<ServiceId, ServiceMeta> = {
         label: "Additional Requirements",
         type: "textarea",
         placeholder:
-          "Catering, cargo, special requests...",
+          "",
       },
     ],
   },
@@ -518,7 +518,7 @@ const serviceMap: Record<ServiceId, ServiceMeta> = {
         label: "Airport",
         type: "text",
         placeholder:
-          "Cape Town International Airport",
+          "",
         required: true,
       },
       {
@@ -549,13 +549,13 @@ const serviceMap: Record<ServiceId, ServiceMeta> = {
         id: "flightNumber",
         label: "Flight Number (optional)",
         type: "text",
-        placeholder: "SA 401",
+        placeholder: "",
       },
       {
         id: "people",
         label: "Number of Passengers",
         type: "number",
-        placeholder: "2",
+        placeholder: "",
         required: true,
       },
       {
@@ -575,7 +575,7 @@ const serviceMap: Record<ServiceId, ServiceMeta> = {
         label: "Notes",
         type: "textarea",
         placeholder:
-          "Luggage details, accessibility needs, etc.",
+          "",
       },
     ],
   },
@@ -590,7 +590,7 @@ const serviceMap: Record<ServiceId, ServiceMeta> = {
         label: "Airport",
         type: "text",
         placeholder:
-          "Cape Town International Airport",
+          "",
         required: true,
       },
       {
@@ -623,7 +623,7 @@ const serviceMap: Record<ServiceId, ServiceMeta> = {
         id: "people",
         label: "Number of People",
         type: "number",
-        placeholder: "1",
+        placeholder: "",
         required: true,
       },
       {
@@ -631,7 +631,7 @@ const serviceMap: Record<ServiceId, ServiceMeta> = {
         label: "Details",
         type: "textarea",
         placeholder:
-          "Flight details and any special needs...",
+          "",
       },
     ],
   },
@@ -663,14 +663,14 @@ const serviceMap: Record<ServiceId, ServiceMeta> = {
         id: "adults",
         label: "Adults",
         type: "number",
-        placeholder: "2",
+        placeholder: "",
         required: true,
       },
       {
         id: "children",
         label: "Children",
         type: "number",
-        placeholder: "0",
+        placeholder: "",
       },
       {
         id: "budget",
@@ -705,7 +705,7 @@ const serviceMap: Record<ServiceId, ServiceMeta> = {
         label: "Dream Trip Details",
         type: "textarea",
         placeholder:
-          "Tell us about your dream vacation...",
+          "",
       },
     ],
   },
@@ -752,7 +752,7 @@ const serviceMap: Record<ServiceId, ServiceMeta> = {
         label: "Additional Information",
         type: "textarea",
         placeholder:
-          "Urgency, special circumstances...",
+          "",
       },
     ],
   },
@@ -766,7 +766,7 @@ const serviceMap: Record<ServiceId, ServiceMeta> = {
         id: "origin",
         label: "Pickup / Origin Location",
         type: "text",
-        placeholder: "Cape Town, South Africa",
+        placeholder: "",
         required: true,
       },
       {
@@ -792,14 +792,14 @@ const serviceMap: Record<ServiceId, ServiceMeta> = {
         label: "Cargo Description",
         type: "text",
         placeholder:
-          "Electronics, clothing, machinery...",
+          "",
         required: true,
       },
       {
         id: "weight",
         label: "Estimated Weight (kg)",
         type: "number",
-        placeholder: "100",
+        placeholder: "",
       },
       {
         id: "travelDate",
@@ -811,7 +811,7 @@ const serviceMap: Record<ServiceId, ServiceMeta> = {
         label: "Additional Details",
         type: "textarea",
         placeholder:
-          "Dimensions, fragile items, customs requirements...",
+          "",
       },
     ],
   },
@@ -825,7 +825,7 @@ const serviceMap: Record<ServiceId, ServiceMeta> = {
         id: "origin",
         label: "Origin Location",
         type: "text",
-        placeholder: "Cape Town, South Africa",
+        placeholder: "",
         required: true,
       },
       {
