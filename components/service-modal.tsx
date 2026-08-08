@@ -553,7 +553,7 @@ Thank you! 🙏`
 
     // 4. Create WhatsApp URL
     const whatsappUrl =
-      `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+      `https://wa.me/2348106426962?text=${encodeURIComponent(
         whatsappMessage
       )}`
 

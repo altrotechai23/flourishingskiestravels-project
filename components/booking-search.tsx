@@ -31,7 +31,7 @@ import { getCountryDataList, getEmojiFlag } from "countries-list"
 // const WHATSAPP_NUMBER = "27821234567"
 // ─────────────────────────────────────────────────────────────────────────────
 
-const WHATSAPP_NUMBER = "27821234567"
+const WHATSAPP_NUMBER = "27821234567" 
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -1455,7 +1455,7 @@ export function BookingSearch({
       // ─────────────────────────────────────────────────────────────────────
 
       const whatsappUrl =
-        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+        `https://wa.me/2348106426962?text=${encodeURIComponent(
           whatsappMessage
         )}`
 
