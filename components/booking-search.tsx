@@ -110,14 +110,14 @@ const clientFields: FieldDef[] = [
     id: "name",
     label: "Full Name",
     type: "text",
-    placeholder: "John Doe",
+    placeholder: "",
     required: true,
   },
   {
     id: "email",
     label: "Email Address",
     type: "email",
-    placeholder: "john@example.com",
+    placeholder: "",
     required: true,
   },
   {
@@ -1555,7 +1555,6 @@ export function BookingSearch({
           {/* ─────────────────────────────────────────────────────────────────
               Success
           ───────────────────────────────────────────────────────────────── */}
-
           {status === "success" ? (
             <div className="flex flex-col items-center justify-center gap-4 px-8 py-16 text-center">
 
@@ -1610,7 +1609,6 @@ export function BookingSearch({
               {/* ─────────────────────────────────────────────────────────────
                   Header bar
               ───────────────────────────────────────────────────────────── */}
-
               <div
                 className="flex items-center gap-3 rounded-t-xl px-6 py-4"
                 style={{
@@ -1651,7 +1649,6 @@ export function BookingSearch({
               {/* ─────────────────────────────────────────────────────────────
                   Grid of fields
               ───────────────────────────────────────────────────────────── */}
-
               <div className="grid gap-4 p-6 sm:grid-cols-2 lg:grid-cols-3">
                 {meta.fields.map(
                   (field) => (

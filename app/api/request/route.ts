@@ -65,73 +65,73 @@ export async function POST(req: Request) {
 
     // ── Admin notification email ──────────────────────────────────────────────
     const adminHtml = `
-<!DOCTYPE html>
-<html>
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
-<body style="margin:0;padding:0;background:#f3f4f6;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="padding:32px 16px;">
-    <tr><td align="center">
-      <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 6px -1px rgba(0,0,0,.1);">
+      <!DOCTYPE html>
+      <html>
+      <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+      <body style="margin:0;padding:0;background:#f3f4f6;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+        <table width="100%" cellpadding="0" cellspacing="0" style="padding:32px 16px;">
+          <tr><td align="center">
+            <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 6px -1px rgba(0,0,0,.1);">
 
-        <!-- Header -->
-        <tr>
-          <td style="background:linear-gradient(135deg,#003b95 0%,#0071c2 100%);padding:32px 40px;text-align:center;">
-            <div style="font-size:40px;margin-bottom:12px;">${emoji}</div>
-            <h1 style="margin:0;color:#ffffff;font-size:24px;font-weight:700;">New Service Request</h1>
-            <p style="margin:8px 0 0;color:#93c5fd;font-size:14px;">${service}</p>
-          </td>
-        </tr>
+              <!-- Header -->
+              <tr>
+                <td style="background:linear-gradient(135deg,#003b95 0%,#0071c2 100%);padding:32px 40px;text-align:center;">
+                  <div style="font-size:40px;margin-bottom:12px;">${emoji}</div>
+                  <h1 style="margin:0;color:#ffffff;font-size:24px;font-weight:700;">New Service Request</h1>
+                  <p style="margin:8px 0 0;color:#93c5fd;font-size:14px;">${service}</p>
+                </td>
+              </tr>
 
-        <!-- Body -->
-        <tr>
-          <td style="padding:32px 40px;">
+              <!-- Body -->
+              <tr>
+                <td style="padding:32px 40px;">
 
-            <!-- Client summary -->
-            <div style="background:#eff6ff;border-radius:12px;padding:20px 24px;margin-bottom:24px;border-left:4px solid #0071c2;">
-              <h2 style="margin:0 0 12px;font-size:16px;color:#1e40af;">Client Information</h2>
-              <table width="100%">
-                <tr>
-                  <td style="font-size:13px;color:#6b7280;padding-bottom:6px;">Full Name</td>
-                  <td style="font-size:14px;font-weight:600;color:#111827;padding-bottom:6px;">${name}</td>
-                </tr>
-                <tr>
-                  <td style="font-size:13px;color:#6b7280;padding-bottom:6px;">Email</td>
-                  <td style="font-size:14px;font-weight:600;color:#111827;padding-bottom:6px;">
-                    <a href="mailto:${email}" style="color:#0071c2;">${email}</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="font-size:13px;color:#6b7280;">Phone</td>
-                  <td style="font-size:14px;font-weight:600;color:#111827;">
-                    <a href="tel:${phone}" style="color:#0071c2;">${phone}</a>
-                  </td>
-                </tr>
-              </table>
-            </div>
+                  <!-- Client summary -->
+                  <div style="background:#eff6ff;border-radius:12px;padding:20px 24px;margin-bottom:24px;border-left:4px solid #0071c2;">
+                    <h2 style="margin:0 0 12px;font-size:16px;color:#1e40af;">Client Information</h2>
+                    <table width="100%">
+                      <tr>
+                        <td style="font-size:13px;color:#6b7280;padding-bottom:6px;">Full Name</td>
+                        <td style="font-size:14px;font-weight:600;color:#111827;padding-bottom:6px;">${name}</td>
+                      </tr>
+                      <tr>
+                        <td style="font-size:13px;color:#6b7280;padding-bottom:6px;">Email</td>
+                        <td style="font-size:14px;font-weight:600;color:#111827;padding-bottom:6px;">
+                          <a href="mailto:${email}" style="color:#0071c2;">${email}</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="font-size:13px;color:#6b7280;">Phone</td>
+                        <td style="font-size:14px;font-weight:600;color:#111827;">
+                          <a href="tel:${phone}" style="color:#0071c2;">${phone}</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
 
-            <!-- Request details -->
-            <h2 style="margin:0 0 12px;font-size:16px;color:#374151;">Request Details</h2>
-            <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;">
-              ${extraRows || `<tr><td colspan="2" style="padding:16px;color:#9ca3af;font-size:14px;">No additional details provided.</td></tr>`}
+                  <!-- Request details -->
+                  <h2 style="margin:0 0 12px;font-size:16px;color:#374151;">Request Details</h2>
+                  <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;">
+                    ${extraRows || `<tr><td colspan="2" style="padding:16px;color:#9ca3af;font-size:14px;">No additional details provided.</td></tr>`}
+                  </table>
+
+                </td>
+              </tr>
+
+              <!-- Footer -->
+              <tr>
+                <td style="padding:24px 40px;background:#f9fafb;border-top:1px solid #e5e7eb;text-align:center;">
+                  <p style="margin:0;font-size:12px;color:#9ca3af;">
+                    This request was submitted via the website booking form.<br>
+                    Please respond to the client within 24 hours.
+                  </p>
+                </td>
+              </tr>
+
             </table>
-
-          </td>
-        </tr>
-
-        <!-- Footer -->
-        <tr>
-          <td style="padding:24px 40px;background:#f9fafb;border-top:1px solid #e5e7eb;text-align:center;">
-            <p style="margin:0;font-size:12px;color:#9ca3af;">
-              This request was submitted via the website booking form.<br>
-              Please respond to the client within 24 hours.
-            </p>
-          </td>
-        </tr>
-
-      </table>
-    </td></tr>
-  </table>
-</body>
+          </td></tr>
+        </table>
+      </body>
     </html>`
 
     // ── Client confirmation email ─────────────────────────────────────────────
@@ -212,25 +212,25 @@ export async function POST(req: Request) {
 
     // Whatsapp Link
     const whatsappMessage = `
-    ✈️ *NEW BOOKING REQUEST*
+                    ✈️ *NEW BOOKING REQUEST*
 
-    Hello Flourishing Skies Travels 👋
-    I would like to make a booking.
+                    Hello Flourishing Skies Travels 👋
+                    I would like to make a booking.
 
-    📋 *Booking Details*
+                    📋 *Booking Details*
 
-    ✈️ *Service:* ${service}
-    👤 *Name:* ${name}
-    📧 *Email:* ${email}
-    📱 *Phone:* ${phone}
+                    ✈️ *Service:* ${service}
+                    👤 *Name:* ${name}
+                    📧 *Email:* ${email}
+                    📱 *Phone:* ${phone}
 
-    ${Object.entries(rest)
-      .filter(([, value]) => value && String(value).trim())
-      .map(([key, value]) => `🔹 *${humanise(key)}:* ${value}`)
-      .join("\n")}
+                    ${Object.entries(rest)
+                      .filter(([, value]) => value && String(value).trim())
+                      .map(([key, value]) => `🔹 *${humanise(key)}:* ${value}`)
+                      .join("\n")}
 
-    Thank you! 🙏
-    `.trim()
+                    Thank you! 🙏
+                    `.trim()
 
     const whatsappUrl = `https://wa.me/2348106426962?text=${encodeURIComponent(whatsappMessage)}`
 

@@ -58,9 +58,9 @@ const ALL_COUNTRIES = getCountryDataList()
 // ─── Core client fields ───────────────────────────────────────────────────────
 
 const clientFields: FieldDef[] = [
-  { id: "name",  label: "Full Name",     type: "text",  placeholder: "John Doe",          required: true, icon: <User  className="h-4 w-4" /> },
-  { id: "email", label: "Email Address", type: "email", placeholder: "john@example.com",  required: true, icon: <Mail  className="h-4 w-4" /> },
-  { id: "phone", label: "Phone Number",  type: "tel",   placeholder: "+27 XX XXX XXXX",   required: true, icon: <Phone className="h-4 w-4" /> },
+  { id: "name",  label: "Full Name",     type: "text",  placeholder: "",          required: true, icon: <User  className="h-4 w-4" /> },
+  { id: "email", label: "Email Address", type: "email", placeholder: "",  required: true, icon: <Mail  className="h-4 w-4" /> },
+  { id: "phone", label: "Phone Number",  type: "tel",   placeholder: "",   required: true, icon: <Phone className="h-4 w-4" /> },
 ]
 
 // ─── Field definitions per service ───────────────────────────────────────────
