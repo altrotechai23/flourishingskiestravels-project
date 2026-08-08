@@ -1439,7 +1439,7 @@ export function BookingSearch({
       // ─────────────────────────────────────────────────────────────────────
       // 2. Build the WhatsApp message
       // ─────────────────────────────────────────────────────────────────────
-
+      const data = await res.json()
       const whatsappMessage =
         buildWhatsAppMessage(
           service,
@@ -1454,16 +1454,14 @@ export function BookingSearch({
       // emojis, spaces, line breaks, &, etc.
       // ─────────────────────────────────────────────────────────────────────
 
-      const whatsappUrl =
-        `https://wa.me/2348106426962?text=${encodeURIComponent(
-          whatsappMessage
-        )}`
+   
 
       // ─────────────────────────────────────────────────────────────────────
       // 4. Redirect user to WhatsApp
       // ─────────────────────────────────────────────────────────────────────
 
-      window.location.href = whatsappUrl
+      // 5. Open WhatsApp
+      window.open(data.whatsappUrl, "_blank", "noopener,noreferrer")
 
       // Keep success state as fallback in case the redirect doesn't happen.
       setStatus("success")
