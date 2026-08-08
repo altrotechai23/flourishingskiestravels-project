@@ -1,14 +1,31 @@
 // app/api/request/route.ts
-// Requires: npm install resend
-// Set env var: RESEND_API_KEY=re_xxxxxxxxxxxx
-//              ADMIN_EMAIL=admin@yourcompany.com
+//
+// Requires:
+// npm install resend
+//
+// Environment variables:
+//
+// RESEND_API_KEY=re_xxxxxxxxxxxx
+// ADMIN_EMAIL=info@flourishingskiestravels.com
+//
+// GREEN_API_ID_INSTANCE=xxxxxxxxxx
+// GREEN_API_API_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+// CLIENT_WHATSAPP_NUMBER=97455078611@c.us
+//
+// IMPORTANT:
+// CLIENT_WHATSAPP_NUMBER should normally be in Green API chatId format,
+// e.g. 97455078611@c.us
+//
 
 import { NextResponse } from "next/server"
 import { Resend } from "resend"
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
+// ─────────────────────────────────────────────────────────────────────────────
 // Pretty-print field names
+// ─────────────────────────────────────────────────────────────────────────────
+
 function humanise(key: string) {
   return key
     .replace(/([A-Z])/g, " $1")
@@ -16,7 +33,10 @@ function humanise(key: string) {
     .trim()
 }
 
-// Map service names to emoji for visual flair in emails
+// ─────────────────────────────────────────────────────────────────────────────
+// Service emojis
+// ─────────────────────────────────────────────────────────────────────────────
+
 const serviceEmoji: Record<string, string> = {
   "Travel Consultancy": "🌍",
   "Visa Assistance": "📋",
@@ -35,209 +55,755 @@ const serviceEmoji: Record<string, string> = {
   "Riders Services": "🏍️",
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// POST
+// ─────────────────────────────────────────────────────────────────────────────
+
 export async function POST(req: Request) {
   try {
+    // ─────────────────────────────────────────────────────────────────────────
+    // Read request body
+    // ─────────────────────────────────────────────────────────────────────────
+
     const body = await req.json()
-    const { service, name, email, phone, ...rest } = body
+
+    const {
+      service,
+      name,
+      email,
+      phone,
+      ...rest
+    } = body
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // Validate required fields
+    // ─────────────────────────────────────────────────────────────────────────
 
     if (!service || !name || !email || !phone) {
-      return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
+      return NextResponse.json(
+        { error: "Missing required fields" },
+        { status: 400 }
+      )
     }
 
     const emoji = serviceEmoji[service] ?? "📩"
-    const adminEmail = process.env.ADMIN_EMAIL ?? "info@flourishingskiestravels.com"
 
-    // ── Build field rows for admin email ──────────────────────────────────────
+    const adminEmail =
+      process.env.ADMIN_EMAIL ?? "info@flourishingskiestravels.com"
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // Build extra rows for admin email
+    // ─────────────────────────────────────────────────────────────────────────
+
     const extraRows = Object.entries(rest)
-      .filter(([, v]) => v && String(v).trim())
+      .filter(([, value]) => value && String(value).trim())
       .map(
-        ([k, v]) => `
+        ([key, value]) => `
         <tr>
-          <td style="padding:10px 16px;font-size:13px;font-weight:600;color:#6b7280;white-space:nowrap;background:#f9fafb;border-bottom:1px solid #e5e7eb;border-right:1px solid #e5e7eb;">
-            ${humanise(k)}
+          <td
+            style="
+              padding:10px 16px;
+              font-size:13px;
+              font-weight:600;
+              color:#6b7280;
+              white-space:nowrap;
+              background:#f9fafb;
+              border-bottom:1px solid #e5e7eb;
+              border-right:1px solid #e5e7eb;
+            "
+          >
+            ${humanise(key)}
           </td>
-          <td style="padding:10px 16px;font-size:14px;color:#111827;border-bottom:1px solid #e5e7eb;">
-            ${String(v)}
+
+          <td
+            style="
+              padding:10px 16px;
+              font-size:14px;
+              color:#111827;
+              border-bottom:1px solid #e5e7eb;
+            "
+          >
+            ${String(value)}
           </td>
-        </tr>`
+        </tr>
+        `
       )
       .join("")
 
-    // ── Admin notification email ──────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────────────────────
+    // Admin notification email
+    // ─────────────────────────────────────────────────────────────────────────
+
     const adminHtml = `
 <!DOCTYPE html>
 <html>
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
-<body style="margin:0;padding:0;background:#f3f4f6;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="padding:32px 16px;">
-    <tr><td align="center">
-      <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 6px -1px rgba(0,0,0,.1);">
+<head>
+  <meta charset="utf-8">
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+  >
+</head>
 
-        <!-- Header -->
-        <tr>
-          <td style="background:linear-gradient(135deg,#003b95 0%,#0071c2 100%);padding:32px 40px;text-align:center;">
-            <div style="font-size:40px;margin-bottom:12px;">${emoji}</div>
-            <h1 style="margin:0;color:#ffffff;font-size:24px;font-weight:700;">New Service Request</h1>
-            <p style="margin:8px 0 0;color:#93c5fd;font-size:14px;">${service}</p>
-          </td>
-        </tr>
+<body
+  style="
+    margin:0;
+    padding:0;
+    background:#f3f4f6;
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  "
+>
 
-        <!-- Body -->
-        <tr>
-          <td style="padding:32px 40px;">
+  <table
+    width="100%"
+    cellpadding="0"
+    cellspacing="0"
+    style="padding:32px 16px;"
+  >
+    <tr>
+      <td align="center">
 
-            <!-- Client summary -->
-            <div style="background:#eff6ff;border-radius:12px;padding:20px 24px;margin-bottom:24px;border-left:4px solid #0071c2;">
-              <h2 style="margin:0 0 12px;font-size:16px;color:#1e40af;">Client Information</h2>
-              <table width="100%">
-                <tr>
-                  <td style="font-size:13px;color:#6b7280;padding-bottom:6px;">Full Name</td>
-                  <td style="font-size:14px;font-weight:600;color:#111827;padding-bottom:6px;">${name}</td>
-                </tr>
-                <tr>
-                  <td style="font-size:13px;color:#6b7280;padding-bottom:6px;">Email</td>
-                  <td style="font-size:14px;font-weight:600;color:#111827;padding-bottom:6px;">
-                    <a href="mailto:${email}" style="color:#0071c2;">${email}</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="font-size:13px;color:#6b7280;">Phone</td>
-                  <td style="font-size:14px;font-weight:600;color:#111827;">
-                    <a href="tel:${phone}" style="color:#0071c2;">${phone}</a>
-                  </td>
-                </tr>
+        <table
+          width="600"
+          cellpadding="0"
+          cellspacing="0"
+          style="
+            background:#ffffff;
+            border-radius:16px;
+            overflow:hidden;
+            box-shadow:0 4px 6px -1px rgba(0,0,0,.1);
+          "
+        >
+
+          <!-- Header -->
+          <tr>
+            <td
+              style="
+                background:linear-gradient(
+                  135deg,
+                  #003b95 0%,
+                  #0071c2 100%
+                );
+                padding:32px 40px;
+                text-align:center;
+              "
+            >
+
+              <div
+                style="
+                  font-size:40px;
+                  margin-bottom:12px;
+                "
+              >
+                ${emoji}
+              </div>
+
+              <h1
+                style="
+                  margin:0;
+                  color:#ffffff;
+                  font-size:24px;
+                  font-weight:700;
+                "
+              >
+                New Service Request
+              </h1>
+
+              <p
+                style="
+                  margin:8px 0 0;
+                  color:#93c5fd;
+                  font-size:14px;
+                "
+              >
+                ${service}
+              </p>
+
+            </td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td style="padding:32px 40px;">
+
+              <!-- Client summary -->
+              <div
+                style="
+                  background:#eff6ff;
+                  border-radius:12px;
+                  padding:20px 24px;
+                  margin-bottom:24px;
+                  border-left:4px solid #0071c2;
+                "
+              >
+
+                <h2
+                  style="
+                    margin:0 0 12px;
+                    font-size:16px;
+                    color:#1e40af;
+                  "
+                >
+                  Client Information
+                </h2>
+
+                <table width="100%">
+
+                  <tr>
+                    <td
+                      style="
+                        font-size:13px;
+                        color:#6b7280;
+                        padding-bottom:6px;
+                      "
+                    >
+                      Full Name
+                    </td>
+
+                    <td
+                      style="
+                        font-size:14px;
+                        font-weight:600;
+                        color:#111827;
+                        padding-bottom:6px;
+                      "
+                    >
+                      ${name}
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td
+                      style="
+                        font-size:13px;
+                        color:#6b7280;
+                        padding-bottom:6px;
+                      "
+                    >
+                      Email
+                    </td>
+
+                    <td
+                      style="
+                        font-size:14px;
+                        font-weight:600;
+                        color:#111827;
+                        padding-bottom:6px;
+                      "
+                    >
+                      <a
+                        href="mailto:${email}"
+                        style="color:#0071c2;"
+                      >
+                        ${email}
+                      </a>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td
+                      style="
+                        font-size:13px;
+                        color:#6b7280;
+                      "
+                    >
+                      Phone
+                    </td>
+
+                    <td
+                      style="
+                        font-size:14px;
+                        font-weight:600;
+                        color:#111827;
+                      "
+                    >
+                      <a
+                        href="tel:${phone}"
+                        style="color:#0071c2;"
+                      >
+                        ${phone}
+                      </a>
+                    </td>
+                  </tr>
+
+                </table>
+
+              </div>
+
+              <!-- Request details -->
+
+              <h2
+                style="
+                  margin:0 0 12px;
+                  font-size:16px;
+                  color:#374151;
+                "
+              >
+                Request Details
+              </h2>
+
+              <table
+                width="100%"
+                cellpadding="0"
+                cellspacing="0"
+                style="
+                  border:1px solid #e5e7eb;
+                  border-radius:12px;
+                  overflow:hidden;
+                "
+              >
+                ${
+                  extraRows ||
+                  `
+                  <tr>
+                    <td
+                      colspan="2"
+                      style="
+                        padding:16px;
+                        color:#9ca3af;
+                        font-size:14px;
+                      "
+                    >
+                      No additional details provided.
+                    </td>
+                  </tr>
+                  `
+                }
               </table>
-            </div>
 
-            <!-- Request details -->
-            <h2 style="margin:0 0 12px;font-size:16px;color:#374151;">Request Details</h2>
-            <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;">
-              ${extraRows || `<tr><td colspan="2" style="padding:16px;color:#9ca3af;font-size:14px;">No additional details provided.</td></tr>`}
-            </table>
+            </td>
+          </tr>
 
-          </td>
-        </tr>
+          <!-- Footer -->
 
-        <!-- Footer -->
-        <tr>
-          <td style="padding:24px 40px;background:#f9fafb;border-top:1px solid #e5e7eb;text-align:center;">
-            <p style="margin:0;font-size:12px;color:#9ca3af;">
-              This request was submitted via the website booking form.<br>
-              Please respond to the client within 24 hours.
-            </p>
-          </td>
-        </tr>
+          <tr>
+            <td
+              style="
+                padding:24px 40px;
+                background:#f9fafb;
+                border-top:1px solid #e5e7eb;
+                text-align:center;
+              "
+            >
 
-      </table>
-    </td></tr>
+              <p
+                style="
+                  margin:0;
+                  font-size:12px;
+                  color:#9ca3af;
+                "
+              >
+                This request was submitted via the website booking form.
+                <br>
+                Please respond to the client within 24 hours.
+              </p>
+
+            </td>
+          </tr>
+
+        </table>
+
+      </td>
+    </tr>
   </table>
-</body>
-    </html>`
 
-    // ── Client confirmation email ─────────────────────────────────────────────
+</body>
+</html>
+`
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // Client confirmation email
+    // ─────────────────────────────────────────────────────────────────────────
+
     const clientHtml = `
 <!DOCTYPE html>
 <html>
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
-<body style="margin:0;padding:0;background:#f3f4f6;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="padding:32px 16px;">
-    <tr><td align="center">
-      <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 6px -1px rgba(0,0,0,.1);">
+<head>
+  <meta charset="utf-8">
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+  >
+</head>
 
-        <tr>
-          <td style="background:linear-gradient(135deg,#003b95 0%,#0071c2 100%);padding:40px;text-align:center;">
-            <div style="font-size:48px;margin-bottom:16px;">✅</div>
-            <h1 style="margin:0;color:#ffffff;font-size:26px;font-weight:700;">We've received your request!</h1>
-            <p style="margin:12px 0 0;color:#bfdbfe;font-size:15px;">Service: <strong style="color:#fff;">${service}</strong></p>
-          </td>
-        </tr>
+<body
+  style="
+    margin:0;
+    padding:0;
+    background:#f3f4f6;
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  "
+>
 
-        <tr>
-          <td style="padding:40px;">
-            <p style="margin:0 0 16px;font-size:16px;color:#374151;">Hi <strong>${name}</strong>,</p>
-            <p style="margin:0 0 24px;font-size:15px;color:#6b7280;line-height:1.7;">
-              Thank you for submitting a <strong>${service}</strong> request. Our team has received your enquiry
-              and will get back to you within <strong>24 hours</strong>.
-            </p>
+  <table
+    width="100%"
+    cellpadding="0"
+    cellspacing="0"
+    style="padding:32px 16px;"
+  >
 
-            <div style="background:#f0fdf4;border-radius:12px;padding:20px 24px;border-left:4px solid #22c55e;margin-bottom:24px;">
-              <p style="margin:0;font-size:14px;color:#16a34a;font-weight:600;">What happens next?</p>
-              <ul style="margin:8px 0 0;padding-left:20px;font-size:14px;color:#374151;line-height:2;">
-                <li>Our team reviews your request</li>
-                <li>A travel specialist is assigned to your case</li>
-                <li>We'll contact you via email or phone to confirm details</li>
-              </ul>
-            </div>
+    <tr>
+      <td align="center">
 
-            <p style="margin:0;font-size:14px;color:#9ca3af;">
-              If you need urgent assistance, please contact us directly at
-              <a href="mailto:${adminEmail}" style="color:#0071c2;">${adminEmail}</a>
-            </p>
-          </td>
-        </tr>
+        <table
+          width="600"
+          cellpadding="0"
+          cellspacing="0"
+          style="
+            background:#ffffff;
+            border-radius:16px;
+            overflow:hidden;
+            box-shadow:0 4px 6px -1px rgba(0,0,0,.1);
+          "
+        >
 
-        <tr>
-          <td style="padding:24px 40px;background:#f9fafb;border-top:1px solid #e5e7eb;text-align:center;">
-            <p style="margin:0;font-size:12px;color:#9ca3af;">
-              You are receiving this because you submitted a request on our website.<br>
-              © ${new Date().getFullYear()} Your Travel Company. All rights reserved.
-            </p>
-          </td>
-        </tr>
+          <!-- Header -->
 
-      </table>
-    </td></tr>
+          <tr>
+            <td
+              style="
+                background:linear-gradient(
+                  135deg,
+                  #003b95 0%,
+                  #0071c2 100%
+                );
+                padding:40px;
+                text-align:center;
+              "
+            >
+
+              <div
+                style="
+                  font-size:48px;
+                  margin-bottom:16px;
+                "
+              >
+                ✅
+              </div>
+
+              <h1
+                style="
+                  margin:0;
+                  color:#ffffff;
+                  font-size:26px;
+                  font-weight:700;
+                "
+              >
+                We've received your request!
+              </h1>
+
+              <p
+                style="
+                  margin:12px 0 0;
+                  color:#bfdbfe;
+                  font-size:15px;
+                "
+              >
+                Service:
+                <strong style="color:#fff;">
+                  ${service}
+                </strong>
+              </p>
+
+            </td>
+          </tr>
+
+          <!-- Body -->
+
+          <tr>
+            <td style="padding:40px;">
+
+              <p
+                style="
+                  margin:0 0 16px;
+                  font-size:16px;
+                  color:#374151;
+                "
+              >
+                Hi <strong>${name}</strong>,
+              </p>
+
+              <p
+                style="
+                  margin:0 0 24px;
+                  font-size:15px;
+                  color:#6b7280;
+                  line-height:1.7;
+                "
+              >
+                Thank you for submitting a
+                <strong>${service}</strong>
+                request. Our team has received your enquiry
+                and will get back to you within
+                <strong>24 hours</strong>.
+              </p>
+
+              <div
+                style="
+                  background:#f0fdf4;
+                  border-radius:12px;
+                  padding:20px 24px;
+                  border-left:4px solid #22c55e;
+                  margin-bottom:24px;
+                "
+              >
+
+                <p
+                  style="
+                    margin:0;
+                    font-size:14px;
+                    color:#16a34a;
+                    font-weight:600;
+                  "
+                >
+                  What happens next?
+                </p>
+
+                <ul
+                  style="
+                    margin:8px 0 0;
+                    padding-left:20px;
+                    font-size:14px;
+                    color:#374151;
+                    line-height:2;
+                  "
+                >
+                  <li>
+                    Our team reviews your request
+                  </li>
+
+                  <li>
+                    A travel specialist is assigned to your case
+                  </li>
+
+                  <li>
+                    We'll contact you via email or phone
+                    to confirm details
+                  </li>
+                </ul>
+
+              </div>
+
+              <p
+                style="
+                  margin:0;
+                  font-size:14px;
+                  color:#9ca3af;
+                "
+              >
+                If you need urgent assistance, please contact us directly at
+
+                <a
+                  href="mailto:${adminEmail}"
+                  style="color:#0071c2;"
+                >
+                  ${adminEmail}
+                </a>
+              </p>
+
+            </td>
+          </tr>
+
+          <!-- Footer -->
+
+          <tr>
+            <td
+              style="
+                padding:24px 40px;
+                background:#f9fafb;
+                border-top:1px solid #e5e7eb;
+                text-align:center;
+              "
+            >
+
+              <p
+                style="
+                  margin:0;
+                  font-size:12px;
+                  color:#9ca3af;
+                "
+              >
+                You are receiving this because you submitted
+                a request on our website.
+                <br>
+                © ${new Date().getFullYear()}
+                Your Travel Company.
+                All rights reserved.
+              </p>
+
+            </td>
+          </tr>
+
+        </table>
+
+      </td>
+    </tr>
+
   </table>
-</body>
-    </html>`
 
-    // ── Send both emails in parallel ──────────────────────────────────────────
+</body>
+</html>
+`
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // 1. SEND EMAILS FIRST
+    // ─────────────────────────────────────────────────────────────────────────
+
     await Promise.all([
+      // Admin email
       resend.emails.send({
-        from: "Travel Requests <onboarding@flourishingskiestravels.com>", // ← update to your verified Resend domain
-        to: "info@flourishingskiestravels.com",
-        subject: `${emoji} New ${service} Request — ${name}`,
+        from:
+          "Travel Requests <onboarding@flourishingskiestravels.com>",
+        to: adminEmail,
+        subject:
+          `${emoji} New ${service} Request — ${name}`,
         html: adminHtml,
         replyTo: email,
       }),
+
+      // Client confirmation email
       resend.emails.send({
-        from: "Your Travel Company <onboarding@flourishingskiestravels.com>", // ← update
+        from:
+          "Your Travel Company <onboarding@flourishingskiestravels.com>",
         to: email,
-        subject: `✅ We've received your ${service} request`,
+        subject:
+          `✅ We've received your ${service} request`,
         html: clientHtml,
       }),
-    ]);
+    ])
 
-    // Whatsapp Link
+    // ─────────────────────────────────────────────────────────────────────────
+    // 2. BUILD WHATSAPP MESSAGE
+    // ─────────────────────────────────────────────────────────────────────────
+
     const whatsappMessage = `
-    ✈️ *NEW BOOKING REQUEST*
+✈️ *NEW BOOKING REQUEST*
 
-    Hello Flourishing Skies Travels 👋
-    I would like to make a booking.
+Hello Flourishing Skies Travels 👋
+A new booking/service request has been submitted through the website.
 
-    📋 *Booking Details*
+📋 *BOOKING DETAILS*
 
-    ✈️ *Service:* ${service}
-    👤 *Name:* ${name}
-    📧 *Email:* ${email}
-    📱 *Phone:* ${phone}
+✈️ *Service:* ${service}
+👤 *Name:* ${name}
+📧 *Email:* ${email}
+📱 *Phone:* ${phone}
 
-    ${Object.entries(rest)
-      .filter(([, value]) => value && String(value).trim())
-      .map(([key, value]) => `🔹 *${humanise(key)}:* ${value}`)
-      .join("\n")}
+${Object.entries(rest)
+  .filter(([, value]) => value && String(value).trim())
+  .map(
+    ([key, value]) =>
+      `🔹 *${humanise(key)}:* ${String(value)}`
+  )
+  .join("\n")}
 
-    Thank you! 🙏
-    `.trim()
+Please review this request and contact the client.
 
-    const whatsappUrl = `https://wa.me/97455078611?text=${encodeURIComponent(whatsappMessage)}`
+Thank you! 🙏
+`.trim()
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // 3. SEND WHATSAPP MESSAGE THROUGH GREEN API
+    // ─────────────────────────────────────────────────────────────────────────
+
+    const idInstance = process.env.GREEN_API_ID_INSTANCE
+    const apiToken = process.env.GREEN_API_API_TOKEN
+    const clientWhatsAppNumber =
+      process.env.CLIENT_WHATSAPP_NUMBER
+
+    // Make sure Green API variables exist
+    if (!idInstance || !apiToken || !clientWhatsAppNumber) {
+      console.error(
+        "Green API environment variables are missing."
+      )
+
+      // Emails already succeeded, so don't pretend the
+      // entire request failed because WhatsApp wasn't configured.
+      return NextResponse.json({
+        success: true,
+        whatsapp: false,
+        whatsappError:
+          "Green API environment variables are missing.",
+      })
+    }
+
+    // Green API endpoint
+    const greenApiUrl =
+      `https://api.green-api.com/waInstance${idInstance}/sendMessage/${apiToken}`
+
+    const greenApiPayload = {
+      chatId: clientWhatsAppNumber,
+      message: whatsappMessage,
+    }
+
+    const greenApiResponse = await fetch(
+      greenApiUrl,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(greenApiPayload),
+      }
+    )
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // Check Green API response
+    // ─────────────────────────────────────────────────────────────────────────
+
+    if (!greenApiResponse.ok) {
+      const greenApiError =
+        await greenApiResponse.text()
+
+      console.error(
+        "Green API failed:",
+        greenApiError
+      )
+
+      // Important:
+      // Emails were already sent successfully.
+      // We return success for the booking itself but
+      // indicate that WhatsApp failed.
+      return NextResponse.json({
+        success: true,
+        whatsapp: false,
+        whatsappError:
+          "Booking received, but WhatsApp notification failed.",
+      })
+    }
+
+    const greenApiResult =
+      await greenApiResponse.json()
+
+    console.log(
+      "Green API WhatsApp sent:",
+      greenApiResult
+    )
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // 4. SUCCESS
+    // ─────────────────────────────────────────────────────────────────────────
 
     return NextResponse.json({
-                  success: true,
-                  whatsappUrl,
-                })
+      success: true,
+      whatsapp: true,
+      whatsappResult: greenApiResult,
+    })
+
   } catch (err) {
-    console.error("Email send error:", err)
-    return NextResponse.json({ error: "Failed to send email" }, { status: 500 })
+    console.error(
+      "Request submission error:",
+      err
+    )
+
+    return NextResponse.json(
+      {
+        error:
+          "Failed to process request",
+      },
+      {
+        status: 500,
+      }
+    )
   }
 }
